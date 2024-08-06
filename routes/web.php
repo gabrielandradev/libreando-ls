@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudentController;
 
 Route::get("/", function () {
     return view("index");
 });
 
-Route::get('/registrarse', [UserController::class, "create"]);
-Route::post('/user', [UserController::class, "store"]);
+Route::get('/registrarse/estudiantes', [StudentController::class, "create"]);
+Route::post('/student', [StudentController::class, "store"]);

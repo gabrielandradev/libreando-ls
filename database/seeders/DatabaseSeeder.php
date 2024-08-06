@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $usuarios = User::factory()->count(10)->make();
+        $usuarios = Student::factory()->count(10)->make();
 
         DB::table('usuarios')->insert($usuarios->toArray());
     }

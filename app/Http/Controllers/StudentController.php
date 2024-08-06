@@ -8,11 +8,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class UserController extends Controller
+class StudentController extends Controller
 {
     public function create(): View
     {
-        return view("user.create");
+        return view("student.create");
     }
 
     public function store(Request $request): RedirectResponse
