@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
 CREATE TABLE IF NOT EXISTS estudiantes (
     dni VARCHAR(8) NOT NULL,
     id_usuario INT NOT NULL,
-    apellido VARCHAR(50) NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
     año TINYINT NOT NULL CHECK(año BETWEEN 1 AND 6),
     division TINYINT NOT NULL,
     turno ENUM('mañana', 'tarde') NOT NULL,
