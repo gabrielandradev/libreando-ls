@@ -2,32 +2,34 @@ CREATE DATABASE IF NOT EXISTS libreando;
 
 USE libreando;
 
-CREATE TABLE IF NOT EXISTS Usuario (
-	id_cuenta INT PRIMARY KEY,
-    email VARCHAR(255) not null,
-    password VARCHAR(255) not null
+CREATE TABLE IF NOT EXISTS usuarios (
+	id INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(255) NOT NULL,
+    contraseña VARCHAR(72) NOT NULL, -- Maximo creado por BCRYPT
+    rol ENUM('estudiante', 'profesor'),
+    PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS Alumno (
-    apellido VARCHAR(50) not null,
-    nombre VARCHAR(50) not null,
-    dni INT PRIMARY KEY,
-    año INT not null, /*La ñ es valida???*/
-    division INT not null,
-    turno VARCHAR(10) not null,
-    especialidad VARCHAR(20) not null,
-    domicilio VARCHAR(50) not null,
-    localidad VARCHAR(50) not null,
-    celular VARCHAR(15) not null,
-    id_usuario INT not null,
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_cuenta)
+CREATE TABLE IF NOT EXISTS estudiantes (
+    dni VARCHAR(8) NOT NULL,
+    id_usuario INT NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    año TINYINT NOT NULL CHECK(año BETWEEN 1 AND 6),
+    division TINYINT NOT NULL,
+    turno ENUM('mañana', 'tarde') NOT NULL,
+    especialidad ENUM('electrica', 'mecanica', 'computacion', 'electronica', 'quimica', 'construcciones'),
+    domicilio VARCHAR(50) NOT NULL,
+    celular VARCHAR(15) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+    PRIMARY KEY(dni)
 );
 
-
-CREATE TABLE IF NOT EXISTS Profesor (
-	dni INT PRIMARY KEY,
-    nombre VARCHAR(255) not null,
-    apellido VARCHAR(255) not null,
-    id_usuario INT not null,
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_cuenta)
+CREATE TABLE IF NOT EXISTS profesores (
+	dni VARCHAR(8) NOT NULL,
+    id_usuario INT NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+    PRIMARY KEY(dni)
 );
