@@ -18,8 +18,23 @@ class StudentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // Validacion de form
+        $validate = $request->validate([
+            'nombre' => 'required|string|alpha:ascii|between:4,16',
+            'apellido'=> 'required|string|alpha:ascii|between:4,16',
+            'dni'=> 'required|integer|numeric|digits:8|',
+            'email'=> 'required|string|email:rfc,dns|', //(exists:user,mail)Pendiente del "Exists" https://laravel.com/docs/11.x/validation#specifying-a-custom-column-name
+            'contraseña'=> 'required|string|alpha_num:ascii|between:4,28',
+            'telefono'=> 'required|integer|numeric|digits:10',
+            'año'=> 'required|string|',
+            'division'=> 'required|string|',
+            'especialidad'=> 'required|string|',
+            'turno'=> 'required|string|',
+            'localidad'=> 'required|string|', //Hay ke ver
+            //confirmed for passwoord? https://laravel.com/docs/11.x/validation#rule-confirmed
+            // enums https://laravel.com/docs/11.x/validation#rule-enum
+            //
+        ]);
         
-
         // En caso de error en validacion o CSRF, mostrar mensaje de error en view
 
 
