@@ -8,21 +8,16 @@ Route::get("/", function () {
     return view("index");
 });
 
-<<<<<<< Updated upstream
 Route::get('/registrarse/', function () {
     return view("user-signup-menu");
 });
 
 Route::controller(StudentController::class)->group(function() {
     Route::get("/registrarse/estudiantes", "create");
-    Route::post("/student", "store");
+    Route::post("/registrarse/estudiantes", "store");
 });
 
 Route::controller(TeacherController::class)->group(function() {
     Route::get("/registrarse/profesores", "create");
-    Route::post("/profesor", "store");
+    Route::post("/registrarse/profesores", "store");
 });
-=======
-Route::get('/registrarse/estudiantes', [StudentController::class, "create"]);
-Route::post('/registrarse/estudiantes', [StudentController::class, "store"]);
->>>>>>> Stashed changes
