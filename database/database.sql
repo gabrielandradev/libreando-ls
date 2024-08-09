@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS estudiantes (
     turno ENUM('mañana', 'tarde') NOT NULL,
     especialidad ENUM('electrica', 'mecanica', 'computacion', 'electronica', 'quimica', 'construcciones'),
     domicilio VARCHAR(50) NOT NULL,
-    celular VARCHAR(15) NOT NULL,
+    telefono VARCHAR(15) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     PRIMARY KEY(dni)
 );

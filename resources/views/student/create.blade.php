@@ -41,7 +41,7 @@
             <option value="mañana">mañana</option>
             <option value="tarde">tarde</option>
         </select><br>
-        Localidad: <input type="text" name="localidad" value="{{ old('title') }}"><br>
+        Domicilio: <input type="text" name="domicilio" value="{{ old('title') }}"><br>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

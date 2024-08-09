@@ -8,7 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Validator;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use App\Models\User;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -18,10 +19,10 @@ class StudentController extends Controller
     }
 
     public function store(Request $request): RedirectResponse
-    {   
+    {
         //Token para validación de solicitud
         $token = $request->session()->token();
- 
+
         $token = csrf_token();
 
         // Validacion de form
@@ -36,7 +37,7 @@ class StudentController extends Controller
             'division' => 'required|string',
             'especialidad' => 'required|string',
             'turno' => 'required|string',
-            'localidad' => 'required|string', //Hay ke ver
+            'domicilio' => 'required|string', //Hay ke ver
             //confirmed for passwoord? https://laravel.com/docs/11.x/validation#rule-confirmed
             // enums https://laravel.com/docs/11.x/validation#rule-enum
             //
@@ -46,26 +47,24 @@ class StudentController extends Controller
         *
         *Hacer una página bonita para el error 419 que arroja laravel al ver que el token no es el mismop
         */
-        
-        // Ingreso de datos a la BD
-        DB::insert('insert into usuarios (email, contraseña, rol) values (?, ?, ?)', [
-            $request->input('email'),
-            $request->input('contraseña'),
-            'estudiante'
+
+        $user = User::create([
+            'email' => $request->input('email'),
+            'contraseña' => bcrypt($request->input('contraseña')),
+            'rol' => 'estudiante'
         ]);
-        DB::insert('insert into estudiantes 
-        (dni, id_usuario, apellido, nombre, año, division, turno, especialidad, domicilio, celular) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-            $request-> input('dni'),
-            // $request-> input('id'),  id_usuario,
-            1,
-            $request-> input('apellido'),
-            $request-> input('nombre'),
-            $request-> input('año'),
-            $request-> input('division'),
-            $request-> input('turno'),
-            $request-> input('especialidad'),
-            $request-> input('localidad'),
-            $request-> input('telefono'),
+
+        $student = Student::create([
+            'dni' => $request->input('dni'),
+            'id_usuario' => $user->id,
+            'apellido' => $request->input('apellido'),
+            'nombre' => $request->input('nombre'),
+            'año' => $request->input('año'),
+            'division' => $request->input('division'),
+            'turno' => $request->input('turno'),
+            'especialidad' => $request->input('especialidad'),
+            'domicilio' => $request->input('domicilio'),
+            'telefono' => $request->input('telefono'),
         ]);
 
         // Redireccion a la pagina previa al inicio de sesion

@@ -11,6 +11,11 @@ class Student extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'estudiantes';
+    protected $primaryKey = 'dni';
+    protected $keyType = 'string';
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,30 +31,15 @@ class Student extends Authenticatable
         'turno',
         'especialidad',
         'domicilio',
-        'celular'
-        
+        'telefono'
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that aren't mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    // protected $guarded = [
+    //     'id_usuario'
+    // ];
 }
