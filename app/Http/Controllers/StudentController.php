@@ -29,8 +29,8 @@ class StudentController extends Controller
         $validate = $request->validate([
             'nombre' => 'required|string|alpha:asciibetween:4,16',
             'apellido' => 'required|string|alpha:ascii|between:4,16',
-            'dni' => 'required|integer|numeric|digits:8',
-            'email' => 'required|string|email:rfc,dns', //(exists:user,mail)Pendiente del "Exists" https://laravel.com/docs/11.x/validation#specifying-a-custom-column-name
+            'dni' => 'required|integer|numeric|digits:8|unique:estudiantes',
+            'email' => 'required|string|email:rfc,dns|unique:usuarios', //(exists:user,mail)Pendiente del "Exists" https://laravel.com/docs/11.x/validation#specifying-a-custom-column-name
             'contraseña' => 'required|string',
             'telefono' => 'required|integer|numeric|digits:10',
             'año' => 'required|string',
