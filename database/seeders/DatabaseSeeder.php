@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
     {
         $usuarios = Student::factory()->count(10)->make();
 
-        DB::table('usuarios')->insert($usuarios->toArray());
+        DB::table('estudiantes')->insert($usuarios->toArray());
     }
 }
