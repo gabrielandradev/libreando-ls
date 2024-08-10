@@ -24,11 +24,16 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'dni' => fake()->unique()-> numberBetween(40000000, 60000000),
+            'id_usuario' => fake()->unique()-> numberBetween(1, 20),
+            'apellido' => fake() -> lastName(),
+            'nombre' => fake() -> firstName(),
+            'año' => fake() -> numberBetween(1, 6),
+            'division' => fake() -> numberBetween(1, 10),
+            'turno' => 'tarde',
+            'especialidad' => 'electrica',
+            'domicilio' => fake() -> address(),
+            'telefono' => fake() -> phoneNumber(),
         ];
     }
 
