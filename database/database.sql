@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS estudiantes (
     division TINYINT NOT NULL,
     turno ENUM('mañana', 'tarde') NOT NULL,
     especialidad ENUM('electrica', 'mecanica', 'computacion', 'electronica', 'quimica', 'construcciones'),
-    domicilio VARCHAR(50) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
+    domicilio VARCHAR(100) NOT NULL,
+    telefono VARCHAR(25) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     PRIMARY KEY(dni)
 );
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS estudiantes (
 CREATE TABLE IF NOT EXISTS profesores (
 	dni VARCHAR(8) NOT NULL,
     id_usuario INT NOT NULL,
-    nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     PRIMARY KEY(dni)
 );

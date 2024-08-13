@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Teacher>
  */
-class StudentFactory extends Factory
+class TeacherFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -21,6 +21,7 @@ class StudentFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    
     public function definition(): array
     {
         return [
@@ -28,22 +29,6 @@ class StudentFactory extends Factory
             'id_usuario' => fake()-> numberBetween(1, 10),
             'apellido' => fake() -> lastName(),
             'nombre' => fake() -> firstName(),
-            'año' => fake() -> numberBetween(1, 6),
-            'division' => fake() -> numberBetween(1, 10),
-            'turno' => 'tarde',
-            'especialidad' => 'electrica',
-            'domicilio' => fake() -> address(),
-            'telefono' => fake() -> phoneNumber(),
         ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
     }
 }
