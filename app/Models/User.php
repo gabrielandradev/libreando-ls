@@ -14,34 +14,20 @@ class User extends Authenticatable
     protected $table = 'usuarios';
     public $timestamps = false;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'email',
         'contraseña',
-        'rol',
+        'rol'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
+        'contraseña'
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    // protected function casts(): array
-    // {
-    //     return [
-    //         'contraseña' => 'hashed'
-    //     ];
-    // }
+    protected function casts(): array
+    {
+        return [
+            'contraseña' => 'hashed'
+        ];
+    }
 }

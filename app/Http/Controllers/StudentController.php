@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -19,11 +20,11 @@ class StudentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // Validacion de form
-        $validate = $request->validate([
-            'nombre' => 'required|string|alpha:asciibetween:4,16',
-            'apellido' => 'required|string|alpha:ascii|between:4,16',
+        $validated = $request->validate([
+            'nombre' => 'required|string|alpha:ascii',
+            'apellido' => 'required|string|alpha:ascii',
             'dni' => 'required|integer|numeric|digits:8|unique:estudiantes',
-            'email' => 'required|string|email:rfc,dns|unique:usuarios', 
+            'email' => 'required|string|email:rfc,dns|unique:usuarios',
             'contraseña' => 'required|string',
             'telefono' => 'required|integer|numeric|digits:10',
             'año' => 'required|string',

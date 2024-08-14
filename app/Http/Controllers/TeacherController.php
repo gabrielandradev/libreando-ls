@@ -20,7 +20,7 @@ class TeacherController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // Validacion de form
-        $validate = $request->validate([
+        $validated = $request->validate([
             'nombre' => 'required|string|alpha:asciibetween:4,16',
             'apellido' => 'required|string|alpha:ascii|between:4,16',
             'dni' => 'required|integer|numeric|digits:8|unique:estudiantes',

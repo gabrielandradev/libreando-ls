@@ -5,7 +5,7 @@ USE libreando;
 CREATE TABLE IF NOT EXISTS usuarios (
 	id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL,
-    contraseña VARCHAR(72) NOT NULL, -- Maximo creado por BCRYPT
+    contraseña VARCHAR(72) NOT NULL,
     rol ENUM('estudiante', 'profesor'),
     PRIMARY KEY (id)
 );
