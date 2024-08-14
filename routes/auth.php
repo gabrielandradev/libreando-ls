@@ -11,11 +11,23 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+Route::middleware('guest')->group(function () {
+    Route::get('registrarse', function () {
+        return view("user-signup-menu");
+    })->name('registrarse');
+
+    Route::controller(StudentController::class)->group(function () {
+        Route::get("/registrarse/estudiantes", "create");
+        Route::post("/registrarse/estudiantes", "store");
+    });
+
+    Route::controller(TeacherController::class)->group(function () {
+        Route::get("/registrarse/profesores", "create");
+        Route::post("/registrarse/profesores", "store");
+    });
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');

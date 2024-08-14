@@ -17,6 +17,6 @@ class UserController extends Controller
 
     public function store(Request $request, string $role): RedirectResponse
     {
-        return redirect();
+        return redirect("/");
     }
 }

@@ -21,14 +21,13 @@ class TeacherFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    
     public function definition(): array
     {
         return [
-            'dni' => fake()->unique()-> numberBetween(40000000, 60000000),
-            'id_usuario' => fake()-> numberBetween(1, 10),
-            'apellido' => fake() -> lastName(),
-            'nombre' => fake() -> firstName(),
+            'dni' => fake()->unique()->numberBetween(40000000, 60000000),
+            'id_usuario' => fake()->numberBetween(1, 10),
+            'apellido' => fake()->lastName(),
+            'nombre' => fake()->firstName(),
         ];
     }
 }
