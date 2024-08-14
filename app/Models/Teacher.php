@@ -11,6 +11,10 @@ class Teacher extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'profesores';
+    protected $primaryKey = 'dni';
+    protected $keyType = 'string';
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -21,28 +25,8 @@ class Teacher extends Authenticatable
         'id_usuario',
         'apellido',
         'nombre',
+        'especialidad',
+        'telefono',
+        'domicilio',
     ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
 }

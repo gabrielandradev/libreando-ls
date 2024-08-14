@@ -26,6 +26,7 @@
             <option value="5">5</option>
             <option value="6">6</option>
         </select><br>
+        División: <input type="text" name="division" value="{{ old('title') }}"><br>
         Especialidad: <select name="especialidad" value="{{ old('title') }}">
             <option value="">--Elije una opcion--</option>
             <option value="construcciones">Construcciones</option>
@@ -35,7 +36,6 @@
             <option value="quimica">Quimica</option>
             <option value="mecanica">Mecánica</option>
         </select><br>
-        División: <input type="text" name="division" value="{{ old('title') }}"><br>
         Turno:<select name="turno" value="{{ old('title') }}">
             <option value="">--Elije una opcion--</option>
             <option value="mañana">mañana</option>
