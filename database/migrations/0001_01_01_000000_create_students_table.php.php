@@ -9,18 +9,21 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
-            $table->id();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::create('estudiantes', function (Blueprint $table) {
+            $table->string('dni')->unique();
+            $table->integer('id_usuario')->unique();
+            $table->string('apellido');
+            $table->string('nombre');
+            $table->tinyInteger('año');
+            $table->tinyInteger('division');
+            $table->enum('turno', ['electrica', 'mecanica', 'computacion', 'electronica', 'quimica', 'construcciones']);
+            $table->string('domicilio');
+            $table->string('telefono');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('estudiantes');
     }
 };
