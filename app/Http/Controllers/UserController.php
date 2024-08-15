@@ -15,18 +15,8 @@ class UserController extends Controller
         return view("user.create");
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, string $role): RedirectResponse
     {
-        // Validacion de form
-        
-
-        // En caso de error en validacion o CSRF, mostrar mensaje de error en view
-
-
-        // Ingreso de datos a la BD
-
-
-        // Redireccion a la pagina previa al inicio de sesion
-        return redirect(/* */);
+        return redirect("/");
     }
 }

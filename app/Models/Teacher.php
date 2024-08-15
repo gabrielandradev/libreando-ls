@@ -15,11 +15,7 @@ class Teacher extends Authenticatable
     protected $primaryKey = 'dni';
     protected $keyType = 'string';
     public $timestamps = false;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'dni',
         'id_usuario',
@@ -28,5 +24,9 @@ class Teacher extends Authenticatable
         'especialidad',
         'telefono',
         'domicilio',
+    ];
+
+    protected $hidden = [
+        'id_usuario'
     ];
 }
