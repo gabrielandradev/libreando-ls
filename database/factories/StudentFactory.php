@@ -24,8 +24,8 @@ class StudentFactory extends Factory
             'division' => fake()->numberBetween(1, 10),
             'turno' => 'tarde',
             'especialidad' => 'electrica',
-            'domicilio' => fake()->address(),
             'telefono' => fake()->phoneNumber(),
+            'domicilio' => fake()->address(),
         ];
     }
 
