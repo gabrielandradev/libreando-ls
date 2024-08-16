@@ -28,6 +28,9 @@ class TeacherFactory extends Factory
             'id_usuario' => fake()->numberBetween(1, 10),
             'apellido' => fake()->lastName(),
             'nombre' => fake()->firstName(),
+            'especialidad' => 'electrica',
+            'telefono' => fake()->phoneNumber(),
+            'domicilio' => fake()->address(),
         ];
     }
 }
