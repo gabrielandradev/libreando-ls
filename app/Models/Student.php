@@ -11,7 +11,7 @@ class Student extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'estudiantes';
+    protected $table = 'estudiante';
     protected $primaryKey = 'dni';
     protected $keyType = 'string';
     public $timestamps = false;
@@ -25,8 +25,8 @@ class Student extends Authenticatable
         'division',
         'turno',
         'especialidad',
-        'domicilio',
-        'telefono'
+        'telefono',
+        'domicilio'
     ];
 
     protected $hidden = [
