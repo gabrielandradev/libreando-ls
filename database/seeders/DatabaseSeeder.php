@@ -18,12 +18,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $usuarios = User::factory()->count(10)->make();
-        DB::table('usuarios')->insert($usuarios->toArray());
+        DB::table('usuario')->insert($usuarios->toArray());
 
         $estudiantes = Student::factory()->count(10)->make();
-        DB::table('estudiantes')->insert($estudiantes->toArray());
+        DB::table('estudiante')->insert($estudiantes->toArray());
 
         $profesores = Teacher::factory()->count(10)->make();
-        DB::table('profesores')->insert($profesores->toArray());
+        DB::table('profesor')->insert($profesores->toArray());
     }
 }
