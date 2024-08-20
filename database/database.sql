@@ -49,29 +49,44 @@ CREATE TABLE IF NOT EXISTS Administrador (
 );
 
 CREATE TABLE IF NOT EXISTS Libro (
-	num_inventario VARCHAR(255) NOT NULL,
+    id_libro INT AUTO_INCREMENT,
+	num_inventario INT NOT NULL,
     ubicacion_fisica VARCHAR(255) NOT NULL,
     titulo VARCHAR(255) NOT NULL,
-    autor VARCHAR(255) NOT NULL, /*Multivaluadiririjillo*/
-    año_edicion YEAR NOT NULL,
-    num_edicion INT NOT NULL,
-    lugar_edicion VARCHAR(255) NOT NULL,
-    isbn VARCHAR(255),
+    isbn INT,
+    año_edicion SMALLINT CHECK (año_edicion > 0),
+    num_edicion INT,
+    lugar_edicion VARCHAR(255),
     desc_primario VARCHAR(255) NOT NULL,
     desc_secundario VARCHAR(255) NOT NULL,
     idioma VARCHAR(255) NOT NULL,
-    notas VARCHAR(255) NOT NULL,
-    num_paginas VARCHAR(255) NOT NULL,
-    PRIMARY KEY(num_inventario)
+    notas VARCHAR(255),
+    num_paginas INT,
+    PRIMARY KEY(id_libro)
+    );
+
+    CREATE TABLE IF NOT EXISTS Autor (
+        id_autor INT AUTO_INCREMENT,
+        nombre VARCHAR(255) NOT NULL,
+        PRIMARY KEY(id_autor)
+    );
+
+    CREATE TABLE IF NOT EXISTS Libro_Autor(
+        id_autor INT NOT NULL,
+        id_libro INT NOT NULL,
+        FOREIGN KEY (id_autor) REFERENCES Autor(id_autor),
+        FOREIGN KEY (id_libro) REFERENCES Libro(id_libro),
+        PRIMARY KEY (id_autor, id_libro)
     );
     
 CREATE TABLE IF NOT EXISTS Prestamo (
-	num_inventario VARCHAR(255) NOT NULL,
+	id_libro INT NOT NULL,
     id_usuario INT NOT NULL,
     fecha_inicio DATE NOT NULL,
     fecha_devolucion DATE NOT NULL,
     estado ENUM('solicitado', 'cancelado', 'prestado', 'devuelto', 'atrasado'),
-    FOREIGN KEY (num_inventario) REFERENCES Libro(num_inventario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-    PRIMARY KEY(num_inventario, id_usuario)
+    FOREIGN KEY (id_libro) REFERENCES Libro(id_libro),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
+    PRIMARY KEY(id_libro, id_usuario)
     );
+    
