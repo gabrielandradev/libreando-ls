@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     
-    protected $table = 'usuario';
+    protected $table = 'Usuario';
     public $timestamps = false;
 
     protected $fillable = [
@@ -21,7 +21,6 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'contraseña'
     ];
 
     protected function casts(): array

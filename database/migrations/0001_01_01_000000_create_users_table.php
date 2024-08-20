@@ -8,8 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
-            $table->id();
+        Schema::create('Usuario', function (Blueprint $table) {
+            $table->id()->unique();
             $table->string('email')->unique();
             $table->string('contraseña');
             $table->enum('rol', ['estudiante', 'profesor']);
@@ -36,7 +36,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('Usuario');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }

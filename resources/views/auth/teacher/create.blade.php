@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-auth-session-status :status="session('status')" />
-
+    <h2>Registrar profesor</h2>
     <form action="/registrarse/profesores" method="POST">
         @csrf
         Nombre: <input type="text" name="nombre" value="{{ old('title') }}"><br>

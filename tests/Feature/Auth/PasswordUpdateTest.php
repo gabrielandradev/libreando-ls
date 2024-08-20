@@ -11,7 +11,7 @@ test('password can be updated', function () {
         ->from('/profile')
         ->put('/password', [
             'current_password' => 'password',
-            'password' => 'new-password',
+            'contraseña' => 'new-password',
             'password_confirmation' => 'new-password',
         ]);
 

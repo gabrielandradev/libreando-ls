@@ -3,7 +3,7 @@
 use App\Models\User;
 
 test('login screen can be rendered', function () {
-    $response = $this->get('/login');
+    $response = $this->get('/iniciar-sesion');
 
     $response->assertStatus(200);
 });
@@ -11,9 +11,9 @@ test('login screen can be rendered', function () {
 test('users can authenticate using the login screen', function () {
     $user = User::factory()->create();
 
-    $response = $this->post('/login', [
+    $response = $this->post('/iniciar-sesion', [
         'email' => $user->email,
-        'password' => 'password',
+        'contraseña' => 'password',
     ]);
 
     $this->assertAuthenticated();
@@ -23,9 +23,9 @@ test('users can authenticate using the login screen', function () {
 test('users can not authenticate with invalid password', function () {
     $user = User::factory()->create();
 
-    $this->post('/login', [
+    $this->post('/iniciar-sesion', [
         'email' => $user->email,
-        'password' => 'wrong-password',
+        'contraseña' => 'wrong-password',
     ]);
 
     $this->assertGuest();

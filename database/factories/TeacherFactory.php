@@ -25,7 +25,7 @@ class TeacherFactory extends Factory
     {
         return [
             'dni' => fake()->unique()->numberBetween(40000000, 60000000),
-            'id_usuario' => fake()->numberBetween(1, 10),
+            'id_usuario' => fake()->unique()->numberBetween(1, 10000),
             'apellido' => fake()->lastName(),
             'nombre' => fake()->firstName(),
             'especialidad' => 'electrica',

@@ -9,14 +9,15 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('estudiantes', function (Blueprint $table) {
+        Schema::create('Estudiante', function (Blueprint $table) {
             $table->string('dni')->unique();
             $table->integer('id_usuario')->unique();
             $table->string('apellido');
             $table->string('nombre');
             $table->tinyInteger('año');
             $table->tinyInteger('division');
-            $table->enum('turno', ['electrica', 'mecanica', 'computacion', 'electronica', 'quimica', 'construcciones']);
+            $table->enum('especialidad', ['electrica', 'mecanica', 'computacion', 'electronica', 'quimica', 'construcciones']);
+            $table->enum('turno', ['mañana', 'tarde']);
             $table->string('domicilio');
             $table->string('telefono');
         });
@@ -24,6 +25,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('estudiantes');
+        Schema::dropIfExists('Estudiante');
     }
 };

@@ -15,9 +15,9 @@
         <div>
             <label for="email">Contrasena</label>
 
-            <input type="password" name="password" id="password" required autocomplete="current-password">
+            <input type="password" name="contraseña" id="contraseña" required autocomplete="current-password">
 
-            <x-input-error :messages="$errors->get('password')" />
+            <x-input-error :messages="$errors->get('contraseña')" />
         </div>
 
         <div>
