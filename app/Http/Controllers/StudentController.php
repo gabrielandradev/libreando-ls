@@ -19,7 +19,6 @@ class StudentController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        // Validacion de form
         $validated = $request->validate([
             'nombre' => 'required|string|alpha:ascii',
             'apellido' => 'required|string|alpha:ascii',
