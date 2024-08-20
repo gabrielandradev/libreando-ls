@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Secreto</title>
-</head>
-
-<body>
-    <h1>SECRETO!!!</h1>
-</body>
-
-</html>
+<x-app-layout>
+    <h1>Secreto</h1>
+</x-app-layout>

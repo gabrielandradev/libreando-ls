@@ -16,23 +16,23 @@ use App\Http\Controllers\TeacherController;
 
 Route::middleware('guest')->group(function () {
     Route::get('registrarse', function () {
-        return view("user-signup-menu");
+        return view("auth.user-signup-menu");
     })->name('registrarse');
 
-    Route::controller(StudentController::class)->group(function () {
-        Route::get("/registrarse/estudiantes", "create");
-        Route::post("/registrarse/estudiantes", "store");
-    });
+    Route::get("/registrarse/estudiantes", [StudentController::class, 'create'])
+        ->name('registrar-estudiante');
 
-    Route::controller(TeacherController::class)->group(function () {
-        Route::get("/registrarse/profesores", "create");
-        Route::post("/registrarse/profesores", "store");
-    });
+    Route::post('/registrarse/estudiantes', [StudentController::class, 'store']);
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    Route::get("/registrarse/profesores", [TeacherController::class, 'create'])
+        ->name('registrar-profesor');
+
+    Route::post('/registrarse/profesores', [TeacherController::class, 'store']);
+
+    Route::get('iniciar-sesion', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('iniciar-sesion', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');

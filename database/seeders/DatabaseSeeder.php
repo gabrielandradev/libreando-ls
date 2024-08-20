@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Book;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -25,5 +26,8 @@ class DatabaseSeeder extends Seeder
 
         $profesores = Teacher::factory()->count(10)->make();
         DB::table('profesor')->insert($profesores->toArray());
+
+        $libros = Book::factory()->count(10)->make();
+        DB::table('CAMBIAME')->insert($libros->toArray());
     }
 }

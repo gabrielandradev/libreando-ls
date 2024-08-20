@@ -9,7 +9,7 @@ Route::get("/", function () {
 
 Route::get('/secret/', function () {
     return view('secret');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])->name("secreto");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

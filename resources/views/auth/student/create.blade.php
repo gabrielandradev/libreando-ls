@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-guest-layout>
+    <x-auth-session-status :status="session('status')" />
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Libreando | Registrarse</title>
-</head>
-
-<body>
-    <!-- Crear form de registro -->
     <form action="/registrarse/estudiantes" method="POST">
         @csrf
         Nombre: <input type="text" name="nombre" value="{{ old('title') }}"><br>
         Apellido: <input type="text" name="apellido" value="{{ old('title') }}"><br>
         DNI: <input type="text" name="dni" value="{{ old('title') }}"><br>
         E-mail: <input type="email" name="email" value="{{ old('title') }}"><br>
-        Contraseña: <input type="password" name="contraseña" value="{{ old('title') }}"><br>
+        Contraseña: <input type="password" name="contraseña" autocomplete="new-password"><br>
         Telefono: <input type="text" name="telefono" value="{{ old('title') }}"><br>
-        Año: <select name="año" value="{{ old('title') }}">
+        Año: <select name="año" value="{{ old('title') }}" required>
             <option value="">--Elije una opcion--</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -27,7 +19,7 @@
             <option value="6">6</option>
         </select><br>
         División: <input type="text" name="division" value="{{ old('title') }}"><br>
-        Especialidad: <select name="especialidad" value="{{ old('title') }}">
+        Especialidad: <select name="especialidad" value="{{ old('title') }}" required>
             <option value="">--Elije una opcion--</option>
             <option value="construcciones">Construcciones</option>
             <option value="computacion">Computación</option>
@@ -38,8 +30,8 @@
         </select><br>
         Turno:<select name="turno" value="{{ old('title') }}">
             <option value="">--Elije una opcion--</option>
-            <option value="mañana">mañana</option>
-            <option value="tarde">tarde</option>
+            <option value="mañana">Mañana</option>
+            <option value="tarde">Tarde</option>
         </select><br>
         Domicilio: <input type="text" name="domicilio" value="{{ old('title') }}"><br>
         @if ($errors->any())
@@ -51,8 +43,7 @@
                 </ul>
             </div>
         @endif
-        <input type="submit">
+        <button type="submit">Registrarse</button>
     </form>
-</body>
 
-</html>
+</x-guest-layout>

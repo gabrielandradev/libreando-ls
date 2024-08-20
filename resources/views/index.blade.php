@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Libreando</title>
-</head>
-
-<body>
-    <h1>Libreando</h1>
-</body>
-
-</html>
+<x-guest-layout>
+    <a href="{{route('secreto')}}">Test de autenticacion</a>
+    <br>
+    <a href="{{route('registrarse')}}">Registrarse</a>
+    <br>
+    <a href="{{route('login')}}">Iniciar sesion</a>
+    <br>
+</x-guest-layout>
