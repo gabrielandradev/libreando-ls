@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\User;
@@ -19,6 +21,15 @@ class TeacherController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $userRequestContent = new Request
+        ([
+                'email' => $request->email,
+                'contraseña' => $request->contraseña,
+                'rol' => 'profesor'
+            ]);
+
+        $userController = new UserController();
+
         $validated = $request->validate([
             'nombre' => 'required|string|alpha:asciibetween:4,16',
             'apellido' => 'required|string|alpha:ascii|between:4,16',
@@ -29,6 +40,8 @@ class TeacherController extends Controller
             'especialidad' => 'required|string',
             'domicilio' => 'required|string'
         ]);
+
+        $user = $userController->store($userRequestContent);
 
         $user = User::create([
             'email' => $request->email,
@@ -46,6 +59,10 @@ class TeacherController extends Controller
             'telefono' => $request->telefono,
         ]);
 
-        return redirect('/');
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(route('dashboard', absolute: false));
     }
 }

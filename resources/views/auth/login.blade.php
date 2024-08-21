@@ -13,7 +13,7 @@
         </div>
 
         <div>
-            <label for="email">Contrasena</label>
+            <label for="email">Contraseña</label>
 
             <input type="password" name="contraseña" id="contraseña" required autocomplete="current-password">
 

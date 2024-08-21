@@ -22,8 +22,8 @@ class StudentController extends Controller
     {
         $userRequestContent = new Request
         ([
-                'email' => $request->param1,
-                'contraseña' => $request->param2,
+                'email' => $request->email,
+                'contraseña' => $request->contraseña,
                 'rol' => 'estudiante'
             ]);
 
