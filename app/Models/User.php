@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-    
+
     protected $table = 'Usuario';
     public $timestamps = false;
 
@@ -20,13 +20,22 @@ class User extends Authenticatable
         'rol'
     ];
 
-    protected $hidden = [
-    ];
+    protected $hidden = [];
+
+    public function getAuthPassword(): string
+    {
+        return $this->contraseña;
+    }
 
     protected function casts(): array
     {
         return [
             'contraseña' => 'hashed'
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->rol == 'administrador';
     }
 }

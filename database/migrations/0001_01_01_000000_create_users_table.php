@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id()->unique();
             $table->string('email')->unique();
             $table->string('contraseña');
-            $table->enum('rol', ['estudiante', 'profesor']);
+            $table->enum('rol', ['estudiante', 'profesor', 'administrador']);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

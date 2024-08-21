@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -12,13 +13,13 @@ class UserController extends Controller
     {
         $request->validate([
             'email' => ['required', 'string', 'email:rfc,dns', 'unique:Usuario'],
-            'contraseña' => ['required', 'string'],
+            'contraseña' => ['required', 'string', Password::defaults()],
         ]);
 
         $user = User::create([
             'email' => $request->email,
-            'contraseña' => bcrypt($request->contraseña),
-            'rol' => 'estudiante'
+            'contraseña' => $request->contraseña,
+            'rol' => $request->rol
         ]);
 
         return $user;

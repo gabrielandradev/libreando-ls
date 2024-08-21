@@ -43,12 +43,6 @@ class TeacherController extends Controller
 
         $user = $userController->store($userRequestContent);
 
-        $user = User::create([
-            'email' => $request->email,
-            'contraseña' => bcrypt($request->contraseña),
-            'rol' => 'profesor'
-        ]);
-
         $teacher = Teacher::create([
             'dni' => $request->dni,
             'id_usuario' => $user->id,

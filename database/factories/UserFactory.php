@@ -17,7 +17,7 @@ class UserFactory extends Factory
     {
         return [
             'email' => fake()->safeEmail(),
-            'contraseña' => static::$password ??= Hash::make('password'),
+            'contraseña' => static::$password ??= Hash::make('jose'),
             'rol' => 'estudiante',
         ];
     }
