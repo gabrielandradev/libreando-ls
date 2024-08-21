@@ -19,15 +19,15 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $usuarios = User::factory()->count(10)->make();
-        DB::table('usuario')->insert($usuarios->toArray());
+        DB::table('Usuario')->insert($usuarios->toArray());
 
         $estudiantes = Student::factory()->count(10)->make();
-        DB::table('estudiante')->insert($estudiantes->toArray());
+        DB::table('Estudiante')->insert($estudiantes->toArray());
 
         $profesores = Teacher::factory()->count(10)->make();
-        DB::table('profesor')->insert($profesores->toArray());
+        DB::table('Profesor')->insert($profesores->toArray());
 
-        $libros = Book::factory()->count(10)->make();
-        DB::table('CAMBIAME')->insert($libros->toArray());
+        // $libros = Book::factory()->count(10)->make();
+        // DB::table('CAMBIAME')->insert($libros->toArray());
     }
 }

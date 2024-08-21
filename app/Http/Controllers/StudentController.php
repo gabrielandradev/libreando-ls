@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\User;
 use App\Models\Student;
 
 class StudentController extends Controller
@@ -19,40 +20,46 @@ class StudentController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        // Validacion de form
-        $validated = $request->validate([
-            'nombre' => 'required|string|alpha:ascii',
-            'apellido' => 'required|string|alpha:ascii',
-            'dni' => 'required|integer|numeric|digits:8|unique:estudiantes',
-            'email' => 'required|string|email:rfc,dns|unique:usuarios',
-            'contraseña' => 'required|string',
-            'telefono' => 'required|integer|numeric|digits:10',
-            'año' => 'required|string',
-            'division' => 'required|string',
-            'especialidad' => 'required|string',
-            'turno' => 'required|string',
-            'domicilio' => 'required|string'
+        $userRequestContent = new Request
+        ([
+                'email' => $request->param1,
+                'contraseña' => $request->param2,
+                'rol' => 'estudiante'
+            ]);
+
+        $userController = new UserController();
+
+        $request->validate([
+            'nombre' => ['required', 'string', 'alpha:ascii'],
+            'apellido' => ['required', 'string', 'alpha:ascii'],
+            'dni' => ['required', 'integer', 'numeric', 'digits:8', 'unique:Estudiante'],
+            'telefono' => ['required', 'integer', 'numeric', 'digits:10'],
+            'año' => ['required', 'string'],
+            'division' => ['required', 'string'],
+            'especialidad' => ['required', 'string'],
+            'turno' => ['required', 'string'],
+            'domicilio' => ['required', 'string']
         ]);
 
-        $user = User::create([
-            'email' => $request->input('email'),
-            'contraseña' => bcrypt($request->input('contraseña')),
-            'rol' => 'estudiante'
-        ]);
+        $user = $userController->store($userRequestContent);
 
-        $student = Student::create([
-            'dni' => $request->input('dni'),
+        Student::create([
+            'dni' => $request->dni,
             'id_usuario' => $user->id,
-            'apellido' => $request->input('apellido'),
-            'nombre' => $request->input('nombre'),
-            'año' => $request->input('año'),
-            'division' => $request->input('division'),
-            'turno' => $request->input('turno'),
-            'especialidad' => $request->input('especialidad'),
-            'domicilio' => $request->input('domicilio'),
-            'telefono' => $request->input('telefono'),
+            'apellido' => $request->apellido,
+            'nombre' => $request->nombre,
+            'año' => $request->año,
+            'division' => $request->division,
+            'turno' => $request->turno,
+            'especialidad' => $request->especialidad,
+            'domicilio' => $request->domicilio,
+            'telefono' => $request->telefono,
         ]);
 
-        return redirect('/');
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(route('dashboard', absolute: false));
     }
 }
