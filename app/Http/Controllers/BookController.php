@@ -24,21 +24,19 @@ class BookController extends Controller
 
     public function store(BookUpdateRequest $request): RedirectResponse
     {
-        $validate = $request->validate([BookUpdateRequest::rules()]);
-
         $book = Book::create([
-            'num_inventario' => $request->input('num_inventario'),
-            'ubicacion_fisica' => $request->input('ubicacion_fisica'),
-            'titulo' => $request->input('titulo'),
-            'año_edicion' => $request->input('año_edicion'),
-            'num_edicion' => $request->input('num_edicion'),
-            'lugar_edicion' => $request->input('lugar_edicion'),
-            'isbn' => $request->input('isbn'),
-            'desc_primario' => $request->input('desc_primario'),
-            'desc_secundario' => $request->input('desc_secundario'),
-            'idioma' => $request->input('idioma'),
-            'notas' => $request->input('notas'),
-            'num_paginas' => $request->input('num_paginas')
+            'num_inventario' => $request->num_inventario,
+            'ubicacion_fisica' => $request->ubicacion_fisica,
+            'titulo' => $request->titulo,
+            'año_edicion' => $request->año_edicion,
+            'num_edicion' => $request->num_edicion,
+            'lugar_edicion' => $request->lugar_edicion,
+            'isbn' => $request->isbn,
+            'desc_primario' => $request->desc_primario,
+            'desc_secundario' => $request->desc_secundario,
+            'idioma' => $request->idioma,
+            'notas' => $request->notas,
+            'num_paginas' => $request->num_paginas
         ]);
 
         return redirect("/");
@@ -52,8 +50,6 @@ class BookController extends Controller
 
     public function update(BookUpdateRequest $request): RedirectResponse
     {
-        $validate = $request->validate([BookUpdateRequest::rules()]);
-
         $book = Book::find($request->id);
         $book->update($request->all());
         return redirect("")->route('book.index')

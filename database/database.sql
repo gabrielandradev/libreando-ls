@@ -70,7 +70,8 @@ CREATE TABLE IF NOT EXISTS Libro (
     num_inventario INT NOT NULL,
     ubicacion_fisica VARCHAR(255) NOT NULL,
     titulo VARCHAR(255) NOT NULL,
-    isbn INT,
+    isbn_10 VARCHAR(13),
+    isbn_13 VARCHAR(16),
     año_edicion SMALLINT CHECK (año_edicion > 0),
     num_edicion INT,
     lugar_edicion VARCHAR(255),
@@ -79,11 +80,16 @@ CREATE TABLE IF NOT EXISTS Libro (
     idioma VARCHAR(255) NOT NULL,
     notas VARCHAR(255),
     num_paginas INT,
+    disponibilidad ENUM(
+        'disponible',
+        'prestamo',
+        'bloqueado'
+    ),
     PRIMARY KEY(id_libro)
 );
 
 CREATE TABLE IF NOT EXISTS Autor (
-    id_autor INT AUTO_INCREMENT,
+    id INT AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     PRIMARY KEY(id_autor)
 );

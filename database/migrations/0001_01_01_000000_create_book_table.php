@@ -14,13 +14,22 @@ return new class extends Migration
             $table->integer('num_inventario')->unique();
             $table->string('ubicacion_fisica');
             $table->string('titulo');
-            $table->string('isbn');
-            $table->string('funcion');
+            $table->string('isbn_10');
+            $table->string('isbn_13');
+            $table->smallInteger('año_edicion');
+            $table->integer('num_edicion');
+            $table->string('lugar_edicion');
+            $table->string('desc_primario');
+            $table->string('desc_secundario');
+            $table->string('idioma');
+            $table->string('notas');
+            $table->integer('num_paginas');
+            $table->enum('disponibilidad', ['disponible', 'prestamo', 'bloqueado']);
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('Administrador');
+        Schema::dropIfExists('Libro');
     }
 };
