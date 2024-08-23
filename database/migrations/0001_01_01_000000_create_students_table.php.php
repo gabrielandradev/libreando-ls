@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('nombre');
             $table->tinyInteger('año');
             $table->tinyInteger('division');
-            $table->enum('especialidad', ['electrica', 'mecanica', 'computacion', 'electronica', 'quimica', 'construcciones']);
-            $table->enum('turno', ['mañana', 'tarde']);
             $table->string('domicilio');
             $table->string('telefono');
+            $table->integer('id_turno');
+            $table->integer('id_especialidad');
         });
     }
 

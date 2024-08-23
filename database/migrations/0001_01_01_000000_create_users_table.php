@@ -12,8 +12,9 @@ return new class extends Migration
             $table->id()->unique();
             $table->string('email')->unique();
             $table->string('contraseña');
-            $table->enum('rol', ['estudiante', 'profesor', 'administrador']);
-            $table->timestamp('email_verified_at')->nullable();
+            $table->integer('id_rol');
+            $table->integer('id_estado_cuenta');
+            $table->timestamp('fecha_verificacion_mail')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,12 +22,13 @@ class BookFactory extends Factory
             'isbn_13' => fake()->isbn13(),
             'año_edicion' => fake()->year(),
             'num_edicion' => fake()->numberBetween(1, 10),
+            'num_paginas' => fake()->numberBetween(10, 100),
             'lugar_edicion' => fake()->city(),
             'desc_primario' => fake()->lastName(),
             'desc_secundario' => fake()->lastName(),
             'idioma' => fake()->languageCode(),
             'notas' => fake()->sentence(),
-            'n'
+            'disponibilidad' => 'disponible'
         ];
     }
 }

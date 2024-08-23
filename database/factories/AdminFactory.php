@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class StudentFactory extends Factory
+class AdminFactory extends Factory
 {
     protected static ?string $password;
 
@@ -18,12 +18,8 @@ class StudentFactory extends Factory
             'id_usuario' => fake()->unique()->numberBetween(1, 10000),
             'apellido' => fake()->lastName(),
             'nombre' => fake()->firstName(),
-            'año' => fake()->numberBetween(1, 6),
-            'division' => fake()->numberBetween(1, 10),
-            'turno' => 'tarde',
-            'especialidad' => 'electrica',
             'telefono' => fake()->phoneNumber(),
-            'domicilio' => fake()->address(),
+            'funcion' => fake()->jobTitle()
         ];
     }
 }

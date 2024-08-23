@@ -6,20 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('Prestamo', function (Blueprint $table) {
+        Schema::create('Libro_Autor', function (Blueprint $table) {
+            $table->integer('id_autor');
             $table->integer('id_libro');
-            $table->integer('id_usuario');
-            $table->date('fecha_prestamo')->nullable();
-            $table->date('fecha_devolucion')->nullable();
-            $table->integer('id_estado_prestamo');
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('Prestamo');
+        Schema::dropIfExists('Libro_Autor');
     }
 };
