@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Estado_Prestamo', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id');
             $table->string('estado')->unique();
         });
+
+        Artisan::call('db:seed', ['--class' => 'EstadoPrestamoSeeder']);
     }
 
     /**

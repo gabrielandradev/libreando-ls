@@ -5,20 +5,31 @@
     <br>
     <a href="{{route('login')}}">Iniciar sesion</a>
     <br>
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-
-        <a href="route('logout')"
-            onclick="event.preventDefault();
-            this.closest('form').submit();">
-            Cerrar sesion
-        </a>
-    </form>
     @if (auth()->check())
-        @if (auth()->user()->isAdmin())
-        Eres admin
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <a href="route('logout')" onclick="event.preventDefault();
+                this.closest('form').submit();">
+                Cerrar sesion
+            </a>
+        </form>
+    @endif
+    @if (auth()->check())
+        @if (auth()->user()->hasRole('administrador'))
+            <p>Eres admin</p>
+            <a href="{{route('libro_crear')}}">Crear nuevo libro</a>
         @else
-        Eres usuario estandar
+            <p>Eres usuario estandar</p>
         @endif
     @endif
+
+    <h2>Todos los libros</h2>
+    @foreach ($books as $book)
+        <ul>
+            <li>
+                <a href="{{route('libro', [$book->id])}}">{{$book->titulo}}</a>
+            </li>
+        </ul>
+    @endforeach
 </x-guest-layout>

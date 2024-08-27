@@ -1,35 +1,35 @@
 CREATE TABLE IF NOT EXISTS Turno (
-	id INT NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL,
   	nombre VARCHAR(20),
   	PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS Especialidad (
-	id INT NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL,
   	nombre VARCHAR(20),
   	PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS Rol (
-  	id INT NOT NULL AUTO_INCREMENT,
+  	id INT NOT NULL,
   	nombre VARCHAR(20),
     PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS Disponibilidad_Libro (
-    id INT AUTO_INCREMENT,
+    id INT,
   	estado VARCHAR(50),
   	PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS Estado_Prestamo (
-    id INT AUTO_INCREMENT,
+    id INT,
     estado VARCHAR(50),
     PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS Estado_Cuenta (
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL,
     estado VARCHAR(50),
     PRIMARY KEY(id)
 );

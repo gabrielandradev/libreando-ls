@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Constants\Rol;
+use App\Constants\EstadoCuenta;
 
 class User extends Authenticatable
 {
@@ -17,7 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'contraseña',
-        'rol'
+        'id_rol',
+        'id_estado_cuenta'
     ];
 
     protected $hidden = [];
@@ -34,8 +37,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function isAdmin(): bool
+    public function hasRole($role): bool
     {
-        return $this->rol == 'administrador';
+        return $this->id_rol == Rol::getKey($role);
+    }
+
+    public function hasAccountStatus($status): bool
+    {
+        return $this->id_estado_cuenta == EstadoCuenta::getKey($status);
     }
 }

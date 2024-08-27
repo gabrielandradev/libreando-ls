@@ -4,20 +4,16 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Constants\Especialidad;
 
 class EspecialidadSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('Especialidad')->insert(
-            [
-                ['nombre' => 'Computación'],
-                ['nombre' => 'Química'],
-                ['nombre' => 'Electrónica'],
-                ['nombre' => 'Eléctrica'],
-                ['nombre' => 'Construcciones'],
-                ['nombre' => 'Mecánica']
-            ]
-        );
+        foreach (Especialidad::getAll() as $id => $nombre) {
+            DB::table('Especialidad')->insert(
+                ['id' => $id, 'nombre' => $nombre]
+            );
+        }
     }
 }

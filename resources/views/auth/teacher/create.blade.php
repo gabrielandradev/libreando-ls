@@ -3,14 +3,14 @@
     <h2>Registrar profesor</h2>
     <form action="/registrarse/profesores" method="POST">
         @csrf
-        Nombre: <input type="text" name="nombre" value="{{ old('title') }}"><br>
-        Apellido: <input type="text" name="apellido" value="{{ old('title') }}"><br>
-        DNI: <input type="text" name="dni" value="{{ old('title') }}"><br>
-        E-mail: <input type="email" name="email" value="{{ old('title') }}"><br>
-        Contraseña: <input type="password" name="contraseña" autocomplete="new-password"><br>
-        Telefono: <input type="text" name="telefono" value="{{ old('title') }}"><br>
-        Especialidad: <input type="text" name="especialidad" value="{{ old('title') }}"><br>
-        Domicilio: <input type="text" name="domicilio" value="{{ old('title') }}"><br>
+        Nombre<input type="text" name="nombre" value="{{ old('nombre') }}"><br>
+        Apellido<input type="text" name="apellido" value="{{ old('apellido') }}"><br>
+        DNI sin puntos ni espacios<input type="text" name="dni" value="{{ old('dni') }}"><br>
+        Mail cuenta @bue.edu.ar<input type="email" name="email" value="{{ old('email') }}"><br>
+        Contraseña<input type="password" name="contraseña" autocomplete="new-password"><br>
+        Teléfono<input type="text" name="telefono" value="{{ old('telefono') }}"><br>
+        Especialidad<input type="text" name="especialidad" value="{{ old('especialidad') }}"><br>
+        Domicilio<input type="text" name="domicilio" value="{{ old('domicilio') }}"><br>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

@@ -2,19 +2,36 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Book;
+use App\Http\Controllers\BookController;
 
 Route::get("/", function () {
-    return view("index");
+    return view("index", ['books' => Book::where('id_disponibilidad', 1)->get()]);
 })->name('dashboard');
 
-Route::get('/secret/', function () {
+Route::get('/secret', function () {
     return view('secret');
-})->middleware(['auth', 'verified'])->name("secreto");
+})->middleware(['auth', 'role:administrador'])->name("secreto");
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/cuenta/bloqueada', function () {
+    return view('profile.blocked');
+})->middleware(['status:blocked'])->name('blocked');
+
+Route::get('/cuenta/pendiente', function () {
+    return view('profile.pending');
+})->middleware(['status:pending'])->name('pending');
+
+Route::get('/libros/{book}', [BookController::class, 'show'])->name('libro');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+// Route::middleware(['auth', ])->group(function () {
+//     Route::get('/admin/dashboard', 'AdminController@dashboard');
+// });
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';

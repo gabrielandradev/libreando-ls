@@ -22,6 +22,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if ($request->user()->hasAccountStatus('bloqueada')) {
+            self::destroy($request);
+            return redirect()->intended(route('blocked', absolute: false));
+        }
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

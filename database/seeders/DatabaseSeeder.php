@@ -20,22 +20,13 @@ class DatabaseSeeder extends Seeder
         $usuarios = User::factory()->count(10)->make();
         DB::table('Usuario')->insert($usuarios->toArray());
 
-        // $estudiantes = Student::factory()->count(10)->make();
-        // DB::table('Estudiante')->insert($estudiantes->toArray());
+        $libros = Book::factory()->count(10)->make();
+        DB::table('Libro')->insert($libros->toArray());
 
-        // $profesores = Teacher::factory()->count(10)->make();
-        // DB::table('Profesor')->insert($profesores->toArray());
-
-        // $libros = Book::factory()->count(10)->make();
-        // DB::table('Libro')->insert($libros->toArray());
-
-        // $autores = Author::factory()->count(10)->make();
-        // DB::table('Autor')->insert($autores->toArray());
+        $autores = Author::factory()->count(10)->make();
+        DB::table('Autor')->insert($autores->toArray());
 
         $administradores = Admin::factory()->count(10)->make();
         DB::table('Administrador')->insert($administradores->toArray());
-
-        // $libros = Book::factory()->count(10)->make();
-        // DB::table('CAMBIAME')->insert($libros->toArray());
     }
 }

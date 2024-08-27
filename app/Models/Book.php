@@ -27,7 +27,9 @@ class Book extends Model
         'idioma',
         'notas',
         'num_paginas',
-        'disponibilidad'
+        'id_disponibilidad',
+        'fecha_creacion',
+        'fecha_edicion',
     ];
 
     protected $hidden = [

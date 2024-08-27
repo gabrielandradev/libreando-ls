@@ -23,8 +23,8 @@ class Student extends Authenticatable
         'nombre',
         'año',
         'division',
-        'turno',
-        'especialidad',
+        'id_turno',
+        'id_especialidad',
         'telefono',
         'domicilio'
     ];

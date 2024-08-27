@@ -9,8 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\User;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
@@ -21,24 +21,23 @@ class TeacherController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $userRequestContent = new Request
-        ([
-                'email' => $request->email,
-                'contraseña' => $request->contraseña,
-                'rol' => 'profesor'
-            ]);
+        $request->validate(['email' => ['regex:/(.*)bue\.edu\.ar$/i']]);
+
+        $userRequestContent = new Request([
+            'email' => $request->email,
+            'contraseña' => $request->contraseña,
+            'rol' => 'profesor'
+        ]);
 
         $userController = new UserController();
 
         $validated = $request->validate([
-            'nombre' => 'required|string|alpha:asciibetween:4,16',
-            'apellido' => 'required|string|alpha:ascii|between:4,16',
-            'dni' => 'required|integer|numeric|digits:8|unique:estudiantes',
-            'email' => 'required|string|email:rfc,dns|unique:usuarios',
-            'contraseña' => 'required|string',
-            'telefono' => 'required|integer|numeric|digits:10',
-            'especialidad' => 'required|string',
-            'domicilio' => 'required|string'
+            'nombre' => ['required', 'string', 'alpha:ascii'],
+            'apellido' => ['required', 'string', 'alpha:ascii'],
+            'dni' => ['required', 'integer', 'numeric', 'digits:8', 'unique:Estudiante'],
+            'telefono' => ['required', 'numeric', 'digits:10'],
+            'especialidad' => ['required', 'string'],
+            'domicilio' => ['required', 'string']
         ]);
 
         $user = $userController->store($userRequestContent);
