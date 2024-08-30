@@ -34,6 +34,12 @@ CREATE TABLE IF NOT EXISTS Estado_Cuenta (
     PRIMARY KEY(id)
 );
 
+CREATE TABLE IF NOT EXISTS Descriptor_Secundario (
+    id INT NOT NULL AUTO_INCREMENT,
+    descriptor VARCHAR(50),
+    PRIMARY KEY(id)
+);
+
 CREATE TABLE IF NOT EXISTS Usuario (
     id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL,
@@ -46,6 +52,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
 );
 
 CREATE TABLE IF NOT EXISTS Estudiante (
+    id INT NOT NULL AUTO_INCREMENT,
     dni VARCHAR(8) NOT NULL,
     id_usuario INT NOT NULL,
     apellido VARCHAR(255) NOT NULL,
@@ -59,10 +66,11 @@ CREATE TABLE IF NOT EXISTS Estudiante (
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
   	FOREIGN KEY (id_turno) REFERENCES Turno(id),
   	FOREIGN KEY (id_especialidad) REFERENCES Especialidad(id),
-    PRIMARY KEY(dni)
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS Administrador (
+    id INT NOT NULL AUTO_INCREMENT,
     dni VARCHAR(8) NOT NULL,
     id_usuario INT NOT NULL AUTO_INCREMENT,
     apellido VARCHAR(255) NOT NULL,
@@ -70,21 +78,20 @@ CREATE TABLE IF NOT EXISTS Administrador (
     telefono VARCHAR(25) NOT NULL,
     funcion VARCHAR(255) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
-    PRIMARY KEY (dni)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS Libro (
     id INT AUTO_INCREMENT,
-    num_inventario INT NOT NULL,
+    num_inventario VARCHAR(255) NOT NULL,
     ubicacion_fisica VARCHAR(255) NOT NULL,
     titulo VARCHAR(255) NOT NULL,
-    isbn_10 VARCHAR(13),
-    isbn_13 VARCHAR(16),
+    isbn VARCHAR(16),
+    editorial VARCHAR(255),
     año_edicion SMALLINT CHECK (año_edicion > 0),
     num_edicion TINYINT NOT NULL,
     lugar_edicion VARCHAR(255),
     desc_primario VARCHAR(255) NOT NULL,
-    desc_secundario VARCHAR(255) NOT NULL,
     idioma VARCHAR(255) NOT NULL,
     notas VARCHAR(255),
     num_paginas INT,
@@ -95,7 +102,14 @@ CREATE TABLE IF NOT EXISTS Libro (
     PRIMARY KEY(id)
 );
 
+CREATE TABLE IF NOT EXISTS Libro_Descriptor_Secundario (
+    id_libro NOT NULL,
+    id_descriptor_secundario NOT NULL,
+    PRIMARY KEY(id_libro, id_descriptor_secundario)
+);
+
 CREATE TABLE IF NOT EXISTS Profesor (
+    id INT NOT NULL AUTO_INCREMENT,
     dni VARCHAR(8) NOT NULL,
     id_usuario INT NOT NULL,
     apellido VARCHAR(255) NOT NULL,
@@ -104,7 +118,7 @@ CREATE TABLE IF NOT EXISTS Profesor (
     telefono VARCHAR(25) NOT NULL,
     domicilio VARCHAR(100) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
-    PRIMARY KEY(dni)
+    PRIMARY KEY(id)
 );
   
 CREATE TABLE IF NOT EXISTS Autor (

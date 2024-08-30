@@ -11,11 +11,12 @@ class BookUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'autores' => ['required', 'string'],
             'num_inventario' => ['required', 'string', 'alpha_dash:ascii', 'unique:libro'],
             'ubicacion_fisica' => ['required', 'string', 'alpha_dash:ascii'],
             'titulo' => ['required', 'string'],
-            'isbn_10' => ['numeric'],
-            'isbn_13' => ['numeric'],
+            'isbn' => ['required', 'numeric'],
+            'editorial' => ['required', 'string'],
             'año_edicion' => ['integer', 'numeric'],
             'num_edicion' => ['integer', 'numeric'],
             'lugar_edicion' => ['string'],
