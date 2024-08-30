@@ -8,7 +8,8 @@ class DisponibilidadLibro extends ConstantHolder
         return [
             1 => 'disponible',
             2 => 'prestado',
-            3 => 'bloqueado'
+            3 => 'bloqueado',
+            4 => 'suspendido'
         ];
     }
 }

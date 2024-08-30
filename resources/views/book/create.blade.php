@@ -19,13 +19,13 @@
         <input type="text" name="ubicacion_fisica" id="ubicacion_fisica" required>
         <br>
         <h2>Identificadores únicos</h2>
-        <label for="isbn_10">ISBN-10</label>
-        <input type="text" name="isbn_10" id="isbn_10" required>
-        <br>
-        <label for="isbn_13">ISBN-13</label>
-        <input type="text" name="isbn_13" id="isbn_13" required>
+        <label for="isbn">ISBN</label>
+        <input type="text" name="isbn" id="isbn" required>
         <br>
         <h2>Datos de la edición</h2>
+        <label for="editorial">Editorial</label>
+        <input type="text" name="editorial" id="editorial" required>
+        <br>
         <label for="año_edicion">Año de edición</label>
         <input type="number" name="año_edicion" id="año_edicion" required>
         <br>

@@ -69,12 +69,12 @@ class BookController extends Controller
 
     public function update(BookUpdateRequest $request, Book $book): RedirectResponse
     {
-        $book::update([
+        $book->update([
             'num_inventario' => $request->num_inventario,
             'ubicacion_fisica' => $request->ubicacion_fisica,
             'titulo' => $request->titulo,
-            'isbn_10' => $request->isbn_10,
-            'isbn_13' => $request->isbn_13,
+            'isbn' => $request->isbn,
+            'editorial' => $request->editorial,
             'año_edicion' => $request->año_edicion,
             'num_edicion' => $request->num_edicion,
             'lugar_edicion' => $request->lugar_edicion,

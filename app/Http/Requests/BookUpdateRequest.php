@@ -15,7 +15,7 @@ class BookUpdateRequest extends FormRequest
             'num_inventario' => ['required', 'string', 'alpha_dash:ascii', 'unique:libro'],
             'ubicacion_fisica' => ['required', 'string', 'alpha_dash:ascii'],
             'titulo' => ['required', 'string'],
-            'isbn' => ['required', 'numeric'],
+            'isbn' => ['required'],
             'editorial' => ['required', 'string'],
             'año_edicion' => ['integer', 'numeric'],
             'num_edicion' => ['integer', 'numeric'],
