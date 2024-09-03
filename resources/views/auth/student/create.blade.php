@@ -10,7 +10,7 @@
         Crea una contraseña<input type="password" name="contraseña" autocomplete="new-password"><br>
         Telefono<input type="text" name="telefono" value="{{ old('telefono') }}"><br>
         Año<select name="año" value="{{ old('año') }}" required>
-            <option value="">--Elige una opción--</option>
+            <option value="">Selecciona una opción</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -20,7 +20,7 @@
         </select><br>
         División<input type="text" name="division" value="{{ old('division') }}"><br>
         Especialidad<select name="especialidad" value="{{ old('especialidad') }}" required>
-            <option value="">--Elige una opción--</option>
+            <option value="">Selecciona una opción</option>
             <option value="construcciones">Construcciones</option>
             <option value="computacion">Computación</option>
             <option value="electrica">Electrica</option>
@@ -29,7 +29,7 @@
             <option value="mecanica">Mecánica</option>
         </select><br>
         Turno<select name="turno" value="{{ old('turno') }}">
-            <option value="">--Elige una opción--</option>
+            <option value="">Selecciona una opción</option>
             <option value="mañana">Mañana</option>
             <option value="tarde">Tarde</option>
         </select><br>

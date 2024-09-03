@@ -11,8 +11,8 @@ class BookUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'autores' => ['required', 'string'],
-            'num_inventario' => ['required', 'string', 'alpha_dash:ascii', 'unique:libro'],
+            'autores' => ['required', 'array'],
+            'autores-*' => ['string', 'distinct'],
             'ubicacion_fisica' => ['required', 'string', 'alpha_dash:ascii'],
             'titulo' => ['required', 'string'],
             'isbn' => ['required'],
@@ -21,7 +21,8 @@ class BookUpdateRequest extends FormRequest
             'num_edicion' => ['integer', 'numeric'],
             'lugar_edicion' => ['string'],
             'desc_primario' => ['required', 'string'],
-            'desc_secundario' => ['required, string'],
+            'desc_secundario' => ['required', 'array'],
+            'desc_secundario-*' => ['string', 'distinct'],
             'idioma' => ['required', 'string'],
             'notas' => ['string'],
             'num_paginas' => ['integer']

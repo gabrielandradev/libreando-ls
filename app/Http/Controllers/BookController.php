@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Book;
 use App\Models\Author;
+use App\Models\BookAuthor;
+use App\Models\SecondaryDesc;
+use App\Models\BookSecondaryDesc;
 use Illuminate\View\View;
 use App\Constants\DisponibilidadLibro;
-use Illuminate\Validation\Validator;
-use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -23,13 +24,15 @@ class BookController extends Controller
 
     public function create(): View
     {
-        return view('book.create', ['disponibilidad' => DisponibilidadLibro::getAll()]);
+        return view(
+            'book.create',
+            ['disponibilidad' => DisponibilidadLibro::getAll()]
+        );
     }
 
     public function store(BookUpdateRequest $request): RedirectResponse
     {
         $book = Book::create([
-            'num_inventario' => $request->num_inventario,
             'ubicacion_fisica' => $request->ubicacion_fisica,
             'titulo' => $request->titulo,
             'isbn' => $request->isbn,
@@ -38,7 +41,6 @@ class BookController extends Controller
             'num_edicion' => $request->num_edicion,
             'lugar_edicion' => $request->lugar_edicion,
             'desc_primario' => $request->desc_primario,
-            'desc_secundario' => $request->desc_secundario,
             'idioma' => $request->idioma,
             'notas' => $request->notas,
             'num_paginas' => $request->num_paginas,
@@ -47,16 +49,24 @@ class BookController extends Controller
             'fecha_edicion' => date('Y-m-d H:i:s')
         ]);
 
-        $authors = array_filter(explode("\n", str_replace("\r", "", $request->autores)));
+        foreach ($request->autores as $autor) {
+            $created_author = Author::create(['nombre' => $autor]);
 
-        foreach ($authors as $author) {
-            $created_author = Author::create([
-                'nombre' => $author
+            BookAuthor::create([
+                'id_libro' => $book->id,
+                'id_autor' => $created_author->id
+            ]);
+        }
+
+        foreach ($request->desc_secundario as $desc_secundario) {
+            $created_desc = SecondaryDesc::create([
+                'descriptor' => $desc_secundario
             ]);
 
-            DB::table('Libro_Autor')->insert(
-                ['id_libro' => $book->id, 'id_autor' => $created_author->id]
-            );
+            BookSecondaryDesc::create([
+                'id_libro' => $book->id,
+                'id_descriptor_secundario' => $created_desc->id
+            ]);
         }
 
         return redirect()->intended(route('dashboard', absolute: false));
@@ -64,13 +74,18 @@ class BookController extends Controller
 
     public function edit(Book $book): View
     {
-        return view('book.edit', ['book' => $book]);
+        return view(
+            'book.edit',
+            [
+                'book' => $book,
+                'disponibilidad' => DisponibilidadLibro::getAll()
+            ]
+        );
     }
 
     public function update(BookUpdateRequest $request, Book $book): RedirectResponse
     {
         $book->update([
-            'num_inventario' => $request->num_inventario,
             'ubicacion_fisica' => $request->ubicacion_fisica,
             'titulo' => $request->titulo,
             'isbn' => $request->isbn,
@@ -79,7 +94,6 @@ class BookController extends Controller
             'num_edicion' => $request->num_edicion,
             'lugar_edicion' => $request->lugar_edicion,
             'desc_primario' => $request->desc_primario,
-            'desc_secundario' => $request->desc_secundario,
             'idioma' => $request->idioma,
             'notas' => $request->notas,
             'num_paginas' => $request->num_paginas,
