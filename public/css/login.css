@@ -1,0 +1,57 @@
+body {
+    background-color: #bdbdbd;
+    font-family: sans-serif;
+}
+
+#childrens {
+    position: absolute;
+}
+
+.loginbox {
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    background-color: #ffffff;
+    position: absolute;
+    left: 50%;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.loginbox h1 {
+    text-align: center;
+    padding: 30px 0px 20px 0px;
+}
+
+.loginbox form {
+    padding: 0 100px;
+    box-sizing: border-box;
+}
+
+form .user {
+    position: relative;
+    margin: 20px 0;
+}
+
+form .user input {
+    width: 400px;
+    height: 35px;
+    align-items: center;
+}
+
+form .user input::placeholder {
+    text-align: center;
+    font-size: 15px;
+}
+
+#button {
+    color:#000;
+    background-color: #9BB3E8;
+    margin: 0;
+    width: 30vh;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
