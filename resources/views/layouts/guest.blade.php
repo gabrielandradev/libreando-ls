@@ -13,12 +13,15 @@
 
 <body>
     <div>
-        <div>
-            <a href="/">
-                <x-application-logo />
-                Sin autenticar
-            </a>
-        </div>
+        @include('layouts.navigation')
+
+        @isset($header)
+            <header>
+                <div>
+                    {{ $header }}
+                </div>
+            </header>
+        @endisset
 
         <hr>
         

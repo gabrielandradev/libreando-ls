@@ -1,7 +1,7 @@
 <nav>
     <div>
         <a href="/">
-            <x-application-logo /> Autenticado
+            <x-application-logo />
         </a>
     </div>
 </nav>
