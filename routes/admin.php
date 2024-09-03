@@ -10,5 +10,7 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
 
     Route::get('/libros/{book}/editar', [BookController::class, 'edit'])->name('libro_editar');
 
+    Route::post('/libros/{book}/editar', [BookController::class, 'update'])->name('libro_editar');
+
     Route::post('/libros/{book}/borrar', [BookController::class, 'edit'])->name('libro_borrar');
 });

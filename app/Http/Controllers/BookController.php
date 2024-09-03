@@ -19,7 +19,10 @@ class BookController extends Controller
 {
     public function show(Book $book): View
     {
-        return view('book.show', ['book' => $book]);
+        return view('book.show', 
+        [
+            'book' => $book
+        ]);
     }
 
     public function create(): View
@@ -100,6 +103,26 @@ class BookController extends Controller
             'id_disponibilidad' => $request->disponibilidad,
             'fecha_edicion' => date('Y-m-d H:i:s')
         ]);
+
+        foreach ($request->autores as $autor) {
+            $created_author = Author::create(['nombre' => $autor]);
+
+            BookAuthor::create([
+                'id_libro' => $book->id,
+                'id_autor' => $created_author->id
+            ]);
+        }
+
+        foreach ($request->desc_secundario as $desc_secundario) {
+            $created_desc = SecondaryDesc::create([
+                'descriptor' => $desc_secundario
+            ]);
+
+            BookSecondaryDesc::create([
+                'id_libro' => $book->id,
+                'id_descriptor_secundario' => $created_desc->id
+            ]);
+        }
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

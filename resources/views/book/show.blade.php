@@ -15,6 +15,21 @@
             @endforeach
         </tr>
     </table>
+
+    <h2>Autores</h2>
+    <ul>
+        @foreach ($book->authors as $author)
+            <li><a href="{{route('autor', [$author->id])}}">{{$author->nombre}}</a></li>
+        @endforeach
+    </ul>
+
+    <h2>Descriptores Secundarios</h2>
+    <ul>
+        @foreach ($book->secondaryDescs as $secondary_desc)
+            <li>{{$secondary_desc->descriptor}}</li>
+        @endforeach
+    </ul>
+
     @if (auth()->check())
         @if (auth()->user()->hasRole('administrador'))
             <a href="{{route('libro_editar', ['book' => $book])}}">Editar</a>

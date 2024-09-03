@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Book;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 
 Route::get("/", function () {
     return view("index", ['books' => Book::where('id_disponibilidad', 1)->get()]);
@@ -22,6 +23,8 @@ Route::get('/cuenta/pendiente', function () {
 })->middleware(['status:pending'])->name('pending');
 
 Route::get('/libros/{book}', [BookController::class, 'show'])->name('libro');
+
+Route::get('/autores/{author}', [AuthorController::class, 'show'])->name('autor');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

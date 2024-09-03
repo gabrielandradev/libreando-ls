@@ -5,6 +5,10 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Author;
+use App\Models\BookAuthor;
+use App\Models\BookSecondaryDesc;
+use App\Models\SecondaryDesc;
 
 class Book extends Model
 {
@@ -33,4 +37,12 @@ class Book extends Model
     protected $hidden = [
         'id'
     ];
+
+    public function authors() {
+        return $this->belongsToMany(Author::class, 'Libro_Autor', 'id_libro', 'id_autor');
+    }
+
+    public function secondaryDescs() {
+        return $this->belongsToMany(SecondaryDesc::class, 'Libro_Descriptor_Secundario', 'id_libro', 'id_descriptor_secundario');
+    }
 }

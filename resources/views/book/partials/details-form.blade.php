@@ -5,10 +5,12 @@
     <input type="text" name="titulo" id="titulo" value="{{$book->titulo ?? ''}}" required>
     <br>
     <div id="authors-container">
-        <div class="author-field-group">
-            <label for="autores-1">Autor</label>
-            <input type="text" name="autores[]" id="autores-1" required>
-        </div>
+        @foreach ($book->authors as $author)
+            <div class="author-field-group">
+                <label for="autores-{{$author->id}}">Autor</label>
+                <input type="text" name="autores[]" id="autores-{{$author->id}}" value="{{$author->nombre}}" required>
+            </div>
+        @endforeach
     </div>
     <button type="button" id="add-author">Añadir otro autor</button>
     <br>
@@ -44,10 +46,12 @@
     <input type="text" name="desc_primario" id="desc_primario" value="{{$book->desc_primario ?? ''}}" required>
     <br>
     <div id="desc-container">
-        <div>
-            <label for="desc_secundario">Descriptor secundario</label>
-            <input type="text" name="desc_secundario" id="desc_secundario" required>
-        </div>
+        @foreach ($book->secondaryDescs as $secondaryDesc)
+            <div>
+                <label for="desc_secundario-{{$secondaryDesc->id}}">Descriptor secundario</label>
+                <input type="text" name="desc_secundario[]" id="desc_secundario-{{$secondaryDesc->id}}" required value="{{$secondaryDesc->descriptor}}">
+            </div>
+        @endforeach
     </div>
     <button type="button" id="add-desc">
         Añadir otro descriptor secundario
