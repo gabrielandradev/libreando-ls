@@ -5,12 +5,14 @@
     <input type="text" name="titulo" id="titulo" value="{{$book->titulo ?? ''}}" required>
     <br>
     <div id="authors-container">
-        @foreach ($book->authors as $author)
-            <div class="author-field-group">
-                <label for="autores-{{$author->id}}">Autor</label>
-                <input type="text" name="autores[]" id="autores-{{$author->id}}" value="{{$author->nombre}}" required>
-            </div>
-        @endforeach
+        @if (isset($book))
+            @foreach ($book->authors as $author)
+                <div class="author-field-group">
+                    <label for="autores-{{$author->id}}">Autor</label>
+                    <input type="text" name="autores[]" id="autores-{{$author->id}}" value="{{$author->nombre}}" required>
+                </div>
+            @endforeach
+        @endif
     </div>
     <button type="button" id="add-author">Añadir otro autor</button>
     <br>
@@ -46,12 +48,15 @@
     <input type="text" name="desc_primario" id="desc_primario" value="{{$book->desc_primario ?? ''}}" required>
     <br>
     <div id="desc-container">
-        @foreach ($book->secondaryDescs as $secondaryDesc)
-            <div>
-                <label for="desc_secundario-{{$secondaryDesc->id}}">Descriptor secundario</label>
-                <input type="text" name="desc_secundario[]" id="desc_secundario-{{$secondaryDesc->id}}" required value="{{$secondaryDesc->descriptor}}">
-            </div>
-        @endforeach
+        @if (isset($book))
+            @foreach ($book->secondaryDescs as $secondaryDesc)
+                <div>
+                    <label for="desc_secundario-{{$secondaryDesc->id}}">Descriptor secundario</label>
+                    <input type="text" name="desc_secundario[]" id="desc_secundario-{{$secondaryDesc->id}}" required
+                        value="{{$secondaryDesc->descriptor}}">
+                </div>
+            @endforeach
+        @endif
     </div>
     <button type="button" id="add-desc">
         Añadir otro descriptor secundario
