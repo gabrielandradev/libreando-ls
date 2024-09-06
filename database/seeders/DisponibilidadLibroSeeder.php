@@ -3,17 +3,27 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Constants\DisponibilidadLibro;
+use App\Models\DisponibilidadLibro;
 
 class DisponibilidadLibroSeeder extends Seeder
 {
+    const DISPONIBILIDAD_LIBRO = [
+        "disponible",
+        "prestado",
+        "bloqueado",
+        "suspendido"
+    ];
+
     public function run(): void
     {
-        foreach (DisponibilidadLibro::getAll() as $id => $estado) {
-            DB::table('Disponibilidad_Libro')->insert(
-                ['id' => $id, 'estado' => $estado]
-            );
+        foreach (self::DISPONIBILIDAD_LIBRO as $id => $estado) {
+            // DDB::table('Disponibilidad_Libro')->insert(
+            //     ['id' => $id, 'estado' => $disponibilidad]
+            // );
+            DisponibilidadLibro::create([
+                "id" => $id,
+                "estado" => $estado
+            ]);
         }
     }
 }

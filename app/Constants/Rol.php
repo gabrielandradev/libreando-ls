@@ -2,14 +2,15 @@
 
 namespace App\Constants;
 
-class Rol extends ConstantHolder
+class Rol
 {
-    protected static function initValues(): array
-    {
-        return [
-            1 => 'estudiante',
-            2 => 'profesor',
-            3 => 'administrador'
-        ];
-    }
+    public const ROL_ESTUDIANTE = "estudiante";
+    public const ROL_PROFESOR = "profesor";
+    public const ROL_ADMIN = "administrador";
+
+    public const ALL_STATUSES = [
+        self::ROL_ESTUDIANTE,
+        self::ROL_PROFESOR,
+        self::ROL_ADMIN
+    ];
 }

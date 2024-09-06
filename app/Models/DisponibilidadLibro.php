@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BookSecondaryDesc extends Model
+class DisponibilidadLibro extends Model
 {
     use HasFactory;
 
-    protected $table = 'Libro_Descriptor_Secundario';
+    protected $table = 'Disponibilidad_Libro';
     public $timestamps = false;
 
     protected $fillable = [
-        'id_libro',
-        'id_descriptor_secundario'
+        "estado"
     ];
+
+    protected $hidden = [
+        "id"
+    ]; 
 }

@@ -39,12 +39,12 @@ class User extends Authenticatable
 
     public function hasRole($role): bool
     {
-        return $this->id_rol == Rol::getKey($role);
+        return $this->id_rol == array_search($role, Rol::ALL_STATUSES);
     }
 
     public function hasAccountStatus($status): bool
     {
-        return $this->id_estado_cuenta == EstadoCuenta::getKey($status);
+        return $this->id_estado_cuenta == array_search($status, EstadoCuenta::ALL_STATUS);
     }
 
     public static function pendingAccounts() {
