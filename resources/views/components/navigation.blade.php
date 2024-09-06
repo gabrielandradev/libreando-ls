@@ -3,6 +3,7 @@
 <nav>
     <div class="topnav">
         <!-- Logo -->
+         <a href="{{route('dashboard')}}"><h1>Libreando</h1></a>
         <div class="search-container">
             <form action="/action_page.php">
                 <select name="items" id="cars">

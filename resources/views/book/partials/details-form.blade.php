@@ -5,7 +5,12 @@
     <input type="text" name="titulo" id="titulo" value="{{$book->titulo ?? ''}}" required>
     <br>
     <div id="authors-container">
-        @if (isset($book))
+        @if (!isset($book))
+            <div class="author-field-group">
+                <label for="autores-1">Autor</label>
+                <input type="text" name="autores[]" id="autores-1" required>
+            </div>
+        @else
             @foreach ($book->authors as $author)
                 <div class="author-field-group">
                     <label for="autores-{{$author->id}}">Autor</label>
@@ -48,7 +53,12 @@
     <input type="text" name="desc_primario" id="desc_primario" value="{{$book->desc_primario ?? ''}}" required>
     <br>
     <div id="desc-container">
-        @if (isset($book))
+        @if (!isset($book))
+            <div>
+                <label for="desc_secundario-1">Descriptor secundario</label>
+                <input type="text" name="desc_secundario[]" id="desc_secundario-1" required>
+            </div>
+        @else
             @foreach ($book->secondaryDescs as $secondaryDesc)
                 <div>
                     <label for="desc_secundario-{{$secondaryDesc->id}}">Descriptor secundario</label>
@@ -106,7 +116,7 @@
 
     const authorsContainer = document.getElementById("authors-container");
     const addAuthorButton = document.getElementById("add-author");
-    let authorCount = 1;
+    let authorCount = 2;
 
     addAuthorButton.addEventListener("click", function () {
         authorCount = addFieldAndGetFieldCount(authorsContainer, "autores", "Autor", authorCount);
@@ -114,7 +124,7 @@
 
     const secondaryDescContainer = document.getElementById("desc-container");
     const addDescButton = document.getElementById("add-desc");
-    let descCount = 1;
+    let descCount = 2;
 
     addDescButton.addEventListener("click", function () {
         descCount = addFieldAndGetFieldCount(secondaryDescContainer, "desc_secundario", "Descriptor Secundario", descCount);

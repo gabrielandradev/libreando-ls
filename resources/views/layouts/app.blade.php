@@ -9,11 +9,13 @@
     <title>{{ config('app.name', 'Libreando') }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @stack('styles')
 </head>
 
 <body>
     <div>
-        @include('layouts.navigation')
+        <x-navigation/>
 
         @isset($header)
             <header>

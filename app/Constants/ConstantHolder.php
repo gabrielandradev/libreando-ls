@@ -32,7 +32,7 @@ abstract class ConstantHolder
     public static function getKey(string $value): ?string
     {
         $values = static::getValues();
-        return array_search($value, $values);
+        return array_search(strtolower($value), $values);
     }
 
     public static function push(string $value): int

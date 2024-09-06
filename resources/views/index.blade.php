@@ -19,6 +19,7 @@
         @if (auth()->user()->hasRole('administrador'))
             <p>Eres admin</p>
             <a href="{{route('libro_crear')}}">Crear nuevo libro</a>
+            <a href="{{route('solicitudes_activacion_cuenta')}}">Cuentas por aprobar</a>
         @else
             <p>Eres usuario estandar</p>
         @endif

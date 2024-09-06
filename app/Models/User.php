@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->id_estado_cuenta == EstadoCuenta::getKey($status);
     }
+
+    public static function pendingAccounts() {
+        return self::where('id_estado_cuenta', EstadoCuenta::getKey('pendiente'));
+    }
 }

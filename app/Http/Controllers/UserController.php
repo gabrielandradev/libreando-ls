@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
+    public function showPendingAccounts(): View {
+
+        return view('admin.account_management.activate_pending', [
+            'accounts_pending' => User::pendingAccounts()->paginate(10)
+        ]);
+    }
+
     public function store(Request $request): User
     {
         $request->validate([

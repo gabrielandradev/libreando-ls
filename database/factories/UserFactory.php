@@ -19,8 +19,8 @@ class UserFactory extends Factory
         return [
             'email' => fake()->safeEmail(),
             'contraseña' => static::$password ??= Hash::make('password'),
-            'id_rol' => Rol::getKey('administrador'),
-            'id_estado_cuenta' => EstadoCuenta::getKey('activada')
+            'id_rol' => Rol::getKey('estudiante'),
+            'id_estado_cuenta' => EstadoCuenta::getKey('pendiente')
         ];
     }
 }
