@@ -10,6 +10,8 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <link rel="stylesheet" href="{{asset('css/reset.css')}}">
+    <link rel="stylesheet" href="{{asset('fonts/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
 
     @stack('styles')

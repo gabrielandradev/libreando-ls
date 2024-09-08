@@ -2,7 +2,9 @@
     
     <x-auth-session-status :status="session('status')" />
 
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    @endpush
 
     <div class="content">
         <div class= "childrens">

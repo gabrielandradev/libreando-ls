@@ -1,8 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
-    font-family: sans-serif;
+body {
+    font-family: "DM Sans", sans-serif;
 }
 
 .content {
