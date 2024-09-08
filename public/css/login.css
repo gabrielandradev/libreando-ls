@@ -12,7 +12,7 @@ body {
 
 .childrens img{
     height: 100vh;
-    padding: 0 6vw 0 0;
+    padding-right: 6vw;
 }
 
 .loginbox {
@@ -22,57 +22,94 @@ body {
     width: 60vw;
     height: 100vh;
     background-color: #FFFFFF;
-    box-shadow: -22px 0px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: -1.5vw 0px 15px rgba(0, 0, 0, 0.15);
 }
 
 .loginbox h1{
-    font-size: 50px;
+    font-size: 5vh;
     text-align: center;
-    padding: 0 0 20px 0;
+    padding-bottom: 2.5vh;
 }
 
 .loginbox .user-login{
-    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3vh 0;
 }
 
 .loginbox .user-login input{
-    font-size: 35px;
+    font-size: 3.4vh;
     padding: 0 10px;
-    width: 550px;
-    height: 75px;
-    border:3px solid #000;
+    width: 30vw;
+    height: 7vh;
+    border: 0.5vh solid #000;
     border-radius: 7px;
 }
 
 .loginbox .user-login input::placeholder{
-    font-size: 35px;
+    font-size: 3.4vh;
     text-align: center;
 }
 
 .loginbox .remember {
-    font-size: 20px;
-    margin: -20px 0 30px;
+    display: flex;
+    justify-content: left;
+    font-size: 2.2vh;
+    margin: -2vh 0 3.5vh;
+}
+
+.loginbox .remember input[type="checkbox"]{
+    position: relative;
+    top: 0;
+    width: 2vh;
+    height: 2vh;
+    appearance: none;
+    outline:none;
+    transition: 0.5s;
     cursor: pointer;
 }
 
-.loginbox .remember input[type="checkbox"]:checked{
-    color: #9BB3E8;
+.loginbox .remember input[type="checkbox"]::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0.4vh solid #000;
+    box-sizing: border-box;
+    transition: .5s;
+}
+
+.loginbox .remember input:checked[type="checkbox"]::before{
+    border-left: none;
+    border-top: none;
+    width: 1vh;
+    transform: rotate(45deg);
+    translate: (0.4vh, -0.4vh);
+    border-color: #7a9edc;
+    transition: 0.5s;
 }
 
 .loginbox .login-btn {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .loginbox .login-btn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color:#000;
-    background-color: #9BB3E8;
-    width: 340px;
-    height: 85px;
+    background-color: #9bb3e8;
+    width: 18.3vw;
+    height: 8vh;
     border-radius: 40px;
-    font-size: 35px;
+    font-size: 3.5vh;
     font-weight: bold;
-    border: 4px solid #000;
+    border: 0.4vh solid #000;
     cursor: pointer;
 }
 
@@ -84,13 +121,29 @@ body {
 .loginbox .forgot {
     display: flex;
     justify-content: center;
-    padding: 35px 0 0;
-    font-size: 25px;
+    padding: 3vh 0 0;
+    font-size: 2.5vh;
+}
+
+.loginbox .forgot a{
+    color: #9BB3E8;
+}
+
+.loginbox .forgot a:hover{
+    color: #FF8080;
 }
 
 .loginbox .signup {
     display: flex;
     justify-content: center;
-    padding: 10px 0 0;
-    font-size: 25px;
+    padding: 1vh 0 0;
+    font-size: 2.5vh;
+}
+
+.loginbox .signup a{
+    color: #9BB3E8;
+}
+
+.loginbox .signup a:hover{
+    color: #FF8080;
 }

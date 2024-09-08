@@ -21,7 +21,7 @@
                 <div class= "user-login">
                     <label for="email"></label>
                     
-                    <input type="email" name="email" id="email" placeholder="Correo Electronico" value="{{ old('email') }}" required autofocus
+                    <input type="email" name="email" id="email" placeholder="Correo Electrónico" value="{{ old('email') }}" required autofocus
                         autocomplete="username">
 
                     <x-input-error :messages="$errors->get('email')" />
