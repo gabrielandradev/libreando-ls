@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS Estudiante (
 CREATE TABLE IF NOT EXISTS Administrador (
     id INT NOT NULL AUTO_INCREMENT,
     dni VARCHAR(8) NOT NULL,
-    id_usuario INT NOT NULL AUTO_INCREMENT, /*Seguro que esto debe ser auto increment??? Mysql opina que no*/
+    id_usuario INT NOT NULL, /*Seguro que esto debe ser auto increment??? Mysql opina que no*/
     apellido VARCHAR(255) NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     telefono VARCHAR(25) NOT NULL,

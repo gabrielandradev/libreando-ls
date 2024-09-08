@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use App\Constants\Rol;
-use App\Constants\EstadoCuenta;
+use App\Models\Role;
+use App\Models\AccountStatus;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -19,8 +19,8 @@ class UserFactory extends Factory
         return [
             'email' => fake()->safeEmail(),
             'contraseña' => static::$password ??= Hash::make('password'),
-            'id_rol' => Rol::getKey('administrador'),
-            'id_estado_cuenta' => EstadoCuenta::getKey('activada')
+            'id_rol' => Role::where('nombre', Role::ROLE_ADMIN)->first()->id,
+            'id_estado_cuenta' => AccountStatus::where('estado', AccountStatus::STATUS_PENDING)->first()->id
         ];
     }
 }

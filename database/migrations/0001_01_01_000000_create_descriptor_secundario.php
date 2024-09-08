@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Rol', function (Blueprint $table) {
-            $table->integer('id');
-            $table->string('nombre')->unique();
+        Schema::create('Descriptor_Secundario', function (Blueprint $table) {
+            $table->id()->unique()->primary();
+            $table->string('descriptor')->unique();
         });
-
-        Artisan::call('db:seed', ['--class' => 'RolSeeder']);
     }
 
     /**
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Rol');
+        Schema::dropIfExists('Descriptor_Secundario');
     }
 };

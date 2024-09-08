@@ -6,15 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use App\Models\AccountStatus;
+use App\Models\Role;
 
 class UserController extends Controller
 {
     public function showPendingAccounts(): View {
 
         return view('admin.account_management.activate_pending', [
-            'accounts_pending' => User::pendingAccounts()->paginate(10)
+            'accounts_pending' => User::pendingAccounts(10)
         ]);
     }
 
@@ -25,15 +26,14 @@ class UserController extends Controller
             'contraseña' => ['required', 'string', Password::defaults()],
         ]);
 
-        $id_rol = DB::table('Rol')->where('nombre', $request->rol)->value('id');
-
-        $cuenta_pendiente = $id_rol = DB::table('Estado_Cuenta')->where('estado', 'Pendiente')->value('id');
+        $pending_status = AccountStatus::where('estado', AccountStatus::STATUS_PENDING)
+        ->first()->id;
 
         $user = User::create([
             'email' => $request->email,
             'contraseña' => $request->contraseña,
-            'id_rol' => $id_rol,
-            'id_estado_cuenta' => $cuenta_pendiente
+            'id_rol' => Role::where('nombre', $request->rol)->first()->id,
+            'id_estado_cuenta' => $pending_status
         ]);
 
         return $user;

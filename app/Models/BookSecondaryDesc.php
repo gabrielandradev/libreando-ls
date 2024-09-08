@@ -14,6 +14,6 @@ class BookSecondaryDesc extends Model
 
     protected $fillable = [
         'id_libro',
-        'id_descriptor_secundario'
+        'id_descriptor_sec'
     ];
 }

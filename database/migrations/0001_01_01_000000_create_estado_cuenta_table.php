@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Descriptor_Secundario', function (Blueprint $table) {
-            $table->id();
-            $table->string('descriptor');
+        Schema::create('Estado_Cuenta', function (Blueprint $table) {
+            $table->id()->primary();
+            $table->string('estado')->unique();
         });
+
+        Artisan::call('db:seed', ['--class' => 'EstadoCuentaSeeder']);
     }
 
     /**
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Descriptor_Secundario');
+        Schema::dropIfExists('Estado_Cuenta');
     }
 };

@@ -31,7 +31,7 @@
     </ul>
 
     @if (auth()->check())
-        @if (auth()->user()->hasRole('administrador'))
+        @if (auth()->user()->role->nombre == 'administrador')
             <a href="{{route('libro_editar', ['book' => $book])}}">Editar</a>
             <a href="{{route('libro_borrar', ['book' => $book])}}">Borrar</a>
         @endif

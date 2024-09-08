@@ -80,14 +80,23 @@
     <label for="disponibilidad">Disponibilidad</label>
     <select name="disponibilidad" id="disponibilidad" required>
         <option value="">Selecciona una opción</option>
-        @foreach ($disponibilidad as $id => $estado)
-            <option value="{{$id}}" @selected(($book->id_disponibilidad ?? -1) == $id)>
-                {{ucfirst($estado)}}
+        @foreach ($bookAvailabilityStatuses as $statusRecord)
+            <option value="{{$statusRecord->estado}}" @selected(($book->id_disponibilidad ?? -1) == $statusRecord->id)>
+                {{ucfirst($statusRecord->estado)}}
             </option>
         @endforeach
     </select>
     <br>
     <hr>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <button type="submit">Enviar</button>
 </form>
 

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Turno', function (Blueprint $table) {
-            $table->integer('id');
-            $table->string('nombre')->unique();
+        Schema::create('Disponibilidad_Libro', function (Blueprint $table) {
+            $table->id()->primary();
+            $table->string('estado')->unique();
         });
 
-        Artisan::call('db:seed', ['--class' => 'TurnoSeeder']);
+        Artisan::call('db:seed', ['--class' => 'DisponibilidadLibroSeeder']);
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Turno');
+        Schema::dropIfExists('Disponibilidad_Libro');
     }
 };

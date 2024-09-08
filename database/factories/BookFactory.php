@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use App\Constants\DisponibilidadLibro;
+use App\Models\BookAvailability;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -27,7 +27,7 @@ class BookFactory extends Factory
             'desc_primario' => fake()->lastName(),
             'idioma' => fake()->languageCode(),
             'notas' => fake()->sentence(),
-            'id_disponibilidad' => DisponibilidadLibro::getKey('disponible'),
+            'id_disponibilidad' => BookAvailability::where('estado', BookAvailability::STATUS_AVAILABLE)->first()->id,
             'fecha_creacion' => fake()->date(),
             'fecha_edicion' => fake()->date()
         ];

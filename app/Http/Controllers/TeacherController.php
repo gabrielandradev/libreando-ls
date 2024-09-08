@@ -10,6 +10,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Teacher;
+use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
@@ -26,7 +27,7 @@ class TeacherController extends Controller
         $userRequestContent = new Request([
             'email' => $request->email,
             'contraseña' => $request->contraseña,
-            'rol' => 'profesor'
+            'rol' => Role::ROLE_TEACHER
         ]);
 
         $userController = new UserController();

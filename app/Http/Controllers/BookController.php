@@ -13,23 +13,20 @@ use App\Models\BookAuthor;
 use App\Models\SecondaryDesc;
 use App\Models\BookSecondaryDesc;
 use Illuminate\View\View;
-use App\Constants\DisponibilidadLibro;
+use App\Models\BookAvailability;
 
 class BookController extends Controller
 {
     public function show(Book $book): View
     {
-        return view('book.show', 
-        [
-            'book' => $book
-        ]);
+        return view('book.show', compact('book'));
     }
 
     public function create(): View
     {
         return view(
             'book.create',
-            ['disponibilidad' => DisponibilidadLibro::getAll()]
+            ['bookAvailabilityStatuses' => BookAvailability::all()]
         );
     }
 
@@ -81,7 +78,7 @@ class BookController extends Controller
             'book.edit',
             [
                 'book' => $book,
-                'disponibilidad' => DisponibilidadLibro::getAll()
+                'bookAvailabilityStatuses' => BookAvailability::all()
             ]
         );
     }

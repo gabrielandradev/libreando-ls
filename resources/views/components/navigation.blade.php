@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
-
 <nav>
     <div class="topnav">
         <!-- Logo -->

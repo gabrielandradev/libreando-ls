@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Student extends Authenticatable
 {
@@ -31,4 +32,12 @@ class Student extends Authenticatable
 
     protected $hidden = [
     ];
+
+    public function major(): BelongsTo {
+        return $this->belongsTo(Major::class, 'id_especialidad');
+    }
+
+    public function shift(): BelongsTo {
+        return $this->belongsTo(Shift::class, 'id_turno');
+    }
 }

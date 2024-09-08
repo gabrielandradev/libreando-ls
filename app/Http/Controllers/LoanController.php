@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Http\Requests\LoanRequest;
 use App\Models\Loan;
-use Illuminate\Support\Facades\DB;
+use App\Models\LoanStatus;
 
 class LoanController extends Controller
 {
@@ -20,14 +20,12 @@ class LoanController extends Controller
 
     public function store(LoanRequest $request): RedirectResponse
     {
-        $estado_pendiente = DB::table('Estado_Prestamo')->where('estado', 'Pendiente')->value('id');
-
         $loan = Loan::create([
             'id_libro' => $request->id_libro,
             'id_usuario' => $request->id_usuario,
             'fecha_prestamo' => null,
             'fecha_devolucion' => null,
-            'id_estado_prestamo' => $estado_pendiente
+            'id_estado_prestamo' => LoanStatus::where('estado', LoanStatus::STATUS_PENDING)->first()->id
         ]);
 
         return redirect(route('loan.user.show', absolute: false));

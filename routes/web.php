@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Book;
+use App\Models\AccountStatus;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
 
@@ -12,15 +13,15 @@ Route::get("/", function () {
 
 Route::get('/secret', function () {
     return view('secret');
-})->middleware(['auth', 'role:administrador'])->name("secreto");
+})->middleware(['auth', 'admin'])->name("secreto");
 
 Route::get('/cuenta/bloqueada', function () {
     return view('profile.blocked');
-})->middleware(['status:blocked'])->name('blocked');
+})->name('blocked');
 
 Route::get('/cuenta/pendiente', function () {
     return view('profile.pending');
-})->middleware(['status:pending'])->name('pending');
+})->name('pending');
 
 Route::get('/libros/{book}', [BookController::class, 'show'])->name('libro');
 

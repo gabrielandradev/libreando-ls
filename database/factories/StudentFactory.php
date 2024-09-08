@@ -3,13 +3,14 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Shift;
+use App\Models\Major;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class StudentFactory extends Factory
 {
-    protected static ?string $password;
 
     public function definition(): array
     {
@@ -20,8 +21,8 @@ class StudentFactory extends Factory
             'nombre' => fake()->firstName(),
             'año' => fake()->numberBetween(1, 6),
             'division' => fake()->numberBetween(1, 10),
-            'turno' => 'tarde',
-            'especialidad' => 'electrica',
+            'turno' => Shift::SHIFT_MORNING,
+            'especialidad' => Major::MAJOR_COMPUTACION,
             'telefono' => fake()->phoneNumber(),
             'domicilio' => fake()->address(),
         ];

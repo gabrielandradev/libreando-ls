@@ -16,7 +16,7 @@
         </form>
     @endif
     @if (auth()->check())
-        @if (auth()->user()->hasRole('administrador'))
+        @if (auth()->user()->role->nombre == 'administrador')
             <p>Eres admin</p>
             <a href="{{route('libro_crear')}}">Crear nuevo libro</a>
             <a href="{{route('solicitudes_activacion_cuenta')}}">Cuentas por aprobar</a>

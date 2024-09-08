@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 
-Route::middleware(['auth', 'role:administrador'])->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/crear/libro', [BookController::class, 'create'])->name('libro_crear');
 
     Route::post('/admin/crear/libro', [BookController::class, 'store'])->name('libro_crear');

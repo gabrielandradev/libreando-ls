@@ -6,8 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Constants\Rol;
-use App\Constants\EstadoCuenta;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -37,17 +38,24 @@ class User extends Authenticatable
         ];
     }
 
-    public function hasRole($role): bool
+    public function role(): BelongsTo
     {
-        return $this->id_rol == array_search($role, Rol::ALL_STATUSES);
+        return $this->belongsTo(Role::class, 'id_rol');
     }
 
-    public function hasAccountStatus($status): bool
+    public function accountStatus(): BelongsTo
     {
-        return $this->id_estado_cuenta == array_search($status, EstadoCuenta::ALL_STATUS);
+        return $this->belongsTo(AccountStatus::class, 'id_estado_cuenta');
     }
 
-    public static function pendingAccounts() {
-        return self::where('id_estado_cuenta', EstadoCuenta::getKey('pendiente'));
+    public function isAdmin(): bool {
+        return $this->role->nombre == Role::ROLE_ADMIN;
+    }
+
+    public static function pendingAccounts(int $pagination): LengthAwarePaginator
+    {
+        return self::whereHas('accountStatus', function($query) {
+            $query->where('estado', AccountStatus::STATUS_PENDING);
+        })->paginate($pagination);
     }
 }

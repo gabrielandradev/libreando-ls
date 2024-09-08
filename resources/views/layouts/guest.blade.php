@@ -10,27 +10,23 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+
     @stack('styles')
 </head>
 
 <body>
-    <div>
-        <x-navigation/>
+    <x-navigation/>
 
-        @isset($header)
-            <header>
-                <div>
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
-
-        <hr>
-        
-        <div>
-            {{ $slot }}
-        </div>
-    </div>
+    @isset($header)
+        <header>
+            <div>
+                {{ $header }}
+            </div>
+        </header>
+    @endisset
+    
+    {{ $slot }}
 </body>
 
 </html>

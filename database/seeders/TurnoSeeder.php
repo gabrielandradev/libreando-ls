@@ -3,17 +3,14 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Constants\Turno;
+use App\Models\Shift;
 
 class TurnoSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach (Turno::getAll() as $id => $nombre) {
-            DB::table('Turno')->insert(
-                ['id' => $id, 'nombre' => $nombre]
-            );
+        foreach (Shift::SHIFTS as $shift) {
+            Shift::create(['nombre' => $shift]);
         }
     }
 }

@@ -15,10 +15,10 @@ class CheckAccountStatus
      */
     public function handle(Request $request, Closure $next, string $status): Response
     {
-        if (!$request->user()) {
-            return redirect()->intended(route('login', absolute: false));
-        }
-        if (!$request->user()->hasAccountStatus($status)) {
+        // if (!$request->user()) {
+        //     return redirect()->intended(route('login', absolute: false));
+        // }
+        if (!$request->user()->accountStatus->estado == $status) {
             abort(403, 'Unauthorized action.');
         }
 

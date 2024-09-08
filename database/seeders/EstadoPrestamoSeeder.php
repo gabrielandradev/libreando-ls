@@ -3,17 +3,14 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Constants\EstadoPrestamo;
+use App\Models\LoanStatus;
 
 class EstadoPrestamoSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach (EstadoPrestamo::getAll() as $id => $estado) {
-            DB::table('Estado_Prestamo')->insert(
-                ['id' => $id, 'estado' => $estado]
-            );
+        foreach (LoanStatus::STATUSES as $status) {
+            LoanStatus::create(['estado' => $status]);
         }
     }
 }

@@ -25,8 +25,5 @@ class DatabaseSeeder extends Seeder
 
         $autores = Author::factory()->count(10)->make();
         DB::table('Autor')->insert($autores->toArray());
-
-        $administradores = Admin::factory()->count(10)->make();
-        DB::table('Administrador')->insert($administradores->toArray());
     }
 }

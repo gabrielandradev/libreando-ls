@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Loan extends Model
 {
@@ -22,4 +23,16 @@ class Loan extends Model
 
     protected $hidden = [
     ];
+
+    public function book(): BelongsTo {
+        return $this->belongsTo(Book::class, 'id_libro');
+    }
+
+    public function borrower(): BelongsTo {
+        return $this->belongsTo(User::class, 'id_usuario');
+    }
+
+    public function loanStatus(): BelongsTo {
+        return $this->belongsTo(LoanStatus::class, 'id_estado_prestamo');
+    }
 }

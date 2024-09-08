@@ -10,6 +10,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Student;
+use App\Models\Role;
 
 class StudentController extends Controller
 {
@@ -24,7 +25,7 @@ class StudentController extends Controller
         ([
                 'email' => $request->email,
                 'contraseña' => $request->contraseña,
-                'rol' => 'estudiante'
+                'rol' => Role::ROLE_STUDENT
             ]);
 
         $userController = new UserController();

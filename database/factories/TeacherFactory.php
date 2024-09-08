@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TeacherFactory extends Factory
 {
-    protected static ?string $password;
 
     public function definition(): array
     {
@@ -18,7 +17,7 @@ class TeacherFactory extends Factory
             'id_usuario' => fake()->unique()->numberBetween(1, 10000),
             'apellido' => fake()->lastName(),
             'nombre' => fake()->firstName(),
-            'especialidad' => 'electrica',
+            'especialidad' => 'fisica',
             'telefono' => fake()->phoneNumber(),
             'domicilio' => fake()->address(),
         ];

@@ -9,14 +9,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Usuario', function (Blueprint $table) {
-            $table->id()->unique();
+            $table->id()->unique()->primary();
             $table->string('email')->unique();
             $table->string('contraseña');
-            $table->integer('id_rol');
-            $table->integer('id_estado_cuenta');
+            $table->foreignId('id_rol');
+            $table->foreignId('id_estado_cuenta');
             $table->timestamp('fecha_verificacion_mail')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('id_rol')
+            ->references('id')->on('Rol');
+
+            $table->foreign('id_estado_cuenta')
+            ->references('id')->on('Estado_Cuenta');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

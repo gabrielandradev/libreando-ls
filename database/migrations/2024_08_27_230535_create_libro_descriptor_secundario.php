@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Libro_Descriptor_Secundario', function (Blueprint $table) {
-            $table->integer('id_libro');
-            $table->integer('id_descriptor_secundario');
+            $table->foreignId('id_libro');
+            $table->foreignId('id_descriptor_sec');
+
+            $table->unique(['id_libro', 'id_descriptor_sec']);
+
+            $table->foreign('id_libro')
+            ->references('id')->on('Libro')->onDelete('cascade');
+
+            $table->foreign('id_descriptor_sec')
+            ->references('id')->on('Descriptor_Secundario')->onDelete('cascade');
         });
     }
 

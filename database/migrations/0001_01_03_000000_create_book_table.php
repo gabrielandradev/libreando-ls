@@ -9,7 +9,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('Libro', function (Blueprint $table) {
-            $table->id()->unique();
+            $table->id()->unique()->primary();
             $table->string('ubicacion_fisica');
             $table->string('titulo');
             $table->string('isbn');
@@ -21,9 +21,12 @@ return new class extends Migration {
             $table->string('idioma');
             $table->string('notas')->nullable();
             $table->string('num_paginas');
-            $table->integer('id_disponibilidad');
+            $table->foreignId('id_disponibilidad');
             $table->date('fecha_creacion');
             $table->date('fecha_edicion');
+
+            $table->foreign('id_disponibilidad')
+            ->references('id')->on('Disponibilidad_Libro');
         });
     }
 

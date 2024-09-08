@@ -9,6 +9,8 @@ use App\Models\Author;
 use App\Models\BookAuthor;
 use App\Models\BookSecondaryDesc;
 use App\Models\SecondaryDesc;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Book extends Model
 {
@@ -38,11 +40,11 @@ class Book extends Model
         'id'
     ];
 
-    public function authors() {
+    public function authors(): BelongsToMany {
         return $this->belongsToMany(Author::class, 'Libro_Autor', 'id_libro', 'id_autor');
     }
 
-    public function secondaryDescs() {
-        return $this->belongsToMany(SecondaryDesc::class, 'Libro_Descriptor_Secundario', 'id_libro', 'id_descriptor_secundario');
+    public function secondaryDescs(): BelongsToMany {
+        return $this->belongsToMany(SecondaryDesc::class, 'Libro_Descriptor_Secundario', 'id_libro', 'id_descriptor_sec');
     }
 }
