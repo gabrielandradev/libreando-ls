@@ -1,0 +1,83 @@
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+.container{
+    min-height: 100vh;
+    display: flex;
+    margin-left: 5vw;
+    margin-top: 5vh;
+}
+
+.container .book-cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .book-cover .cover img{
+    width: 50vh;
+    height: 60vh;
+}
+
+.container .book-cover .available-btn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#000;
+    background-color: #ffbd46;
+    width: 45vh;
+    height: 8vh;
+    border-radius: 40px;
+    font-size: 3.35vh;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 2.5vh;
+}
+
+.container .book-cover .available-btn button:hover{
+    color:#000;
+    background-color: #e4a83a;
+}
+
+.container .book-cover .add-list-btn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#000;
+    background-color: #fff;
+    width: 45vh;
+    height: 8vh;
+    border-radius: 40px;
+    font-size: 3.35vh;
+    font-weight: bold;
+    border: 0.7vh solid #ffbd46;
+    cursor: pointer;
+    margin-top: 2.5vh;
+}
+
+.container .book-cover .add-list-btn button:hover{
+    background-color:#dddbdb;   
+}
+
+.container .book-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10vw;
+}
+
+.container .book-info h1 {
+    font-family: "Playfair Display";
+    font-size: 7.5vh;
+    font-weight: 450;
+}
+
+.container .book-info .autors a{
+    color: #000;
+    text-decoration: none;
+}
+
+.container .book-info .autors a:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,58 @@
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #B9C6E1;
+}
+
+.container .content{
+    display: flex;
+    flex-direction: column;
+    background-color: #B9C6E1;
+    width: 40vw;
+    height: 100vh;
+    margin-left: 3.5vw;
+    margin-top: 18vh;
+}
+
+.container .content .tittle {
+    display: flex;
+    flex-direction: column;    
+}
+.container .content .tittle h2{
+    font-size: 3vh;
+    font-weight: 550;
+    margin-left: 5vw;
+    margin-bottom: -2.5vw;
+}
+
+.container .content .tittle h1{
+    font-size: 6.5vw;
+    margin-bottom: -2.6vw;
+}
+
+.container .content .text{
+    margin-top: 4vw;
+    display: flex;
+    align-items: flex-start;
+    font-size: 2vw;
+    font-weight: 800;
+    margin: 6vh 0 -3vh 0;
+    line-height: 1.25;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30vh;
+}
+
+.image img{
+    height: 60vh;
+}

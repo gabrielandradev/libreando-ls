@@ -1,34 +1,44 @@
 <x-guest-layout>
-    <h1>{{$book->titulo}}</h1>
-    <table>
-        <tr>
-            @foreach ($book->getHidden() as $value)
-                <th>{{$value}}</th>
-            @endforeach
-            @foreach ($book->getFillable() as $value)
-                <th>{{$value}}</th>
-            @endforeach
-        </tr>
-        <tr>
-            @foreach ($book->getAttributes() as $value)
-                <td>{{$value}}</td>
-            @endforeach
-        </tr>
-    </table>
 
-    <h2>Autores</h2>
-    <ul>
-        @foreach ($book->authors as $author)
-            <li><a href="{{route('autor', [$author->id])}}">{{$author->nombre}}</a></li>
-        @endforeach
-    </ul>
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('css/book_show.css') }}">
+    @endpush
 
-    <h2>Descriptores Secundarios</h2>
-    <ul>
-        @foreach ($book->secondaryDescs as $secondary_desc)
-            <li>{{$secondary_desc->descriptor}}</li>
-        @endforeach
-    </ul>
+    <div class="container">
+        <div class="book-cover">
+            <div class= "cover">
+                <img src="{{ asset('images/book/portada.png') }}" alt="Niños en columna">
+            </div>
+            
+            <div class="available-btn">
+                <button type="submit">DISPONIBLE</button>
+            </div>
+            
+            <div class="add-list-btn">
+                <button type="submit">AGREGAR A LA LISTA</button>
+            </div>
+        </div>
+        
+        <div class="book-info">
+            <h1>{{$book->titulo}}</h1>
+
+            <div class="autors">
+                @foreach ($book->authors as $author)
+                     <a href="{{route('autor', [$author->id])}}">{{$author->nombre}}</a>,
+                @endforeach
+            </div>
+
+            <h2>Descriptores Secundarios</h2>
+            <ul>
+                @foreach ($book->secondaryDescs as $secondary_desc)
+                    <li>{{$secondary_desc->descriptor}}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
+    
+    
 
     @if (auth()->check())
         @if (auth()->user()->role->nombre == 'administrador')

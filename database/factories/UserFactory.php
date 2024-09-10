@@ -20,7 +20,7 @@ class UserFactory extends Factory
             'email' => fake()->safeEmail(),
             'contraseña' => static::$password ??= Hash::make('password'),
             'id_rol' => Role::where('nombre', Role::ROLE_ADMIN)->first()->id,
-            'id_estado_cuenta' => AccountStatus::where('estado', AccountStatus::STATUS_PENDING)->first()->id
+            'id_estado_cuenta' => AccountStatus::where('estado', AccountStatus::STATUS_ACTIVE)->first()->id
         ];
     }
 }
