@@ -33,8 +33,8 @@ class TeacherController extends Controller
         $userController = new UserController();
 
         $validated = $request->validate([
-            'nombre' => ['required', 'string', 'alpha:ascii'],
-            'apellido' => ['required', 'string', 'alpha:ascii'],
+            'nombre' => ['required', 'string'],
+            'apellido' => ['required', 'string'],
             'dni' => ['required', 'integer', 'numeric', 'digits:8', 'unique:Estudiante'],
             'telefono' => ['required', 'numeric', 'digits:10'],
             'especialidad' => ['required', 'string'],
@@ -54,8 +54,6 @@ class TeacherController extends Controller
         ]);
 
         event(new Registered($user));
-
-        Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
     }

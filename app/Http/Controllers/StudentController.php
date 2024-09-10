@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Student;
 use App\Models\Role;
+use App\Models\AccountStatus;
+use App\Models\Shift;
+use App\Models\Major;
 
 class StudentController extends Controller
 {
@@ -44,6 +47,9 @@ class StudentController extends Controller
 
         $user = $userController->store($userRequestContent);
 
+        $id_turno = Shift::where('nombre', $request->turno)->first()->id;
+        $id_especialidad = Major::where('nombre', $request->especialidad)->first()->id;
+
         Student::create([
             'dni' => $request->dni,
             'id_usuario' => $user->id,
@@ -51,15 +57,13 @@ class StudentController extends Controller
             'nombre' => $request->nombre,
             'año' => $request->año,
             'division' => $request->division,
-            'turno' => $request->turno,
-            'especialidad' => $request->especialidad,
+            'id_turno' => $id_turno,
+            'id_especialidad' => $id_especialidad,
             'domicilio' => $request->domicilio,
             'telefono' => $request->telefono,
         ]);
 
         event(new Registered($user));
-
-        Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
     }
