@@ -28,22 +28,72 @@
                 @endforeach
             </div>
 
-            <h2>Descriptores Secundarios</h2>
-            <ul>
-                @foreach ($book->secondaryDescs as $secondary_desc)
-                    <li>{{$secondary_desc->descriptor}}</li>
-                @endforeach
-            </ul>
+            <div class="description">
+                <table>
+                    <tr class="primary">
+                        <th>TEMA</th>
+                        <td>{{$book->desc_primario}}</td>
+                    </tr>
+
+                    <tr class="secondary">
+                        <th>SUBTEMA</th>
+                        <td>
+                            <ul>
+                                @foreach ($book->secondaryDescs as $secondary_desc)
+                                    <li>{{$secondary_desc->descriptor}}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="this-edition">
+                <h2>SOBRE ESTA EDICIÓN</h2>
+                <table>
+                    <tr>
+                        <th>NUMERO PÁGINAS</th>
+                        <td>{{$book->num_paginas}} p.</td>
+                    </tr>
+                    <tr>
+                        <th>IDIOMA</th>
+                        <td>{{$book->idioma}}</td>
+                    </tr>
+                    <tr>
+                        <th>UBICACIÓN</th>
+                        <td>{{$book->ubicacion_fisica}}</td>
+                    </tr>
+                    <tr>
+                        <th>ISBN</th>
+                        <td>{{$book->isbn}}</td>
+                    </tr>
+                    <tr>
+                        <th>AÑO DE EDICION</th>
+                        <td>{{$book->año_edicion}}</td>
+                    </tr>
+                    <tr>
+                        <th>EDITORIAL</th>
+                        <td>{{$book->editorial}}</td>
+                    </tr>
+                    <tr>
+                        <th>NOTAS</th>
+                        <td>{{$book->notas}}</td>
+                    </tr>
+                </table>
+            </div>
+            
         </div>
     </div>
-
     
-    
-
-    @if (auth()->check())
-        @if (auth()->user()->role->nombre == 'administrador')
-            <a href="{{route('libro_editar', ['book' => $book])}}">Editar</a>
-            <a href="{{route('libro_borrar', ['book' => $book])}}">Borrar</a>
+    <div class="admin-view">
+        @if (auth()->check())
+            @if (auth()->user()->role->nombre == 'administrador')
+                <h2>Opciones de administrador</h2>
+                <div class="admin-btn">
+                    <a href="{{route('libro_editar', ['book' => $book])}}">Editar</a>
+                    <a href="{{route('libro_borrar', ['book' => $book])}}">Borrar</a>
+                </div>
+            @endif
         @endif
-    @endif
+    </div>
 </x-guest-layout>

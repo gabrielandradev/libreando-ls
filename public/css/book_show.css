@@ -2,7 +2,7 @@ body {
     font-family: "DM Sans", sans-serif;
 }
 
-.container{
+.container {
     min-height: 100vh;
     display: flex;
     margin-left: 5vw;
@@ -15,12 +15,13 @@ body {
     align-items: center;
 }
 
-.container .book-cover .cover img{
+.container .book-cover .cover img {
     width: 50vh;
     height: 60vh;
+    box-shadow: 1.5vw 0 15px rgba(0, 0, 0, 0.25);
 }
 
-.container .book-cover .available-btn button{
+.container .book-cover .available-btn button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,12 +37,12 @@ body {
     margin-top: 2.5vh;
 }
 
-.container .book-cover .available-btn button:hover{
+.container .book-cover .available-btn button:hover {
     color:#000;
     background-color: #e4a83a;
 }
 
-.container .book-cover .add-list-btn button{
+.container .book-cover .add-list-btn button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +58,7 @@ body {
     margin-top: 2.5vh;
 }
 
-.container .book-cover .add-list-btn button:hover{
+.container .book-cover .add-list-btn button:hover {
     background-color:#dddbdb;   
 }
 
@@ -65,6 +66,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 10vw;
+    margin-top: -3vh;
 }
 
 .container .book-info h1 {
@@ -73,11 +75,147 @@ body {
     font-weight: 450;
 }
 
-.container .book-info .autors a{
+.container .book-info .autors a {
     color: #000;
+    font-size: 3.5vh;
     text-decoration: none;
 }
 
-.container .book-info .autors a:hover{
+.container .book-info .autors a:hover {
     text-decoration: underline;
+}
+
+.description {
+    margin-top: 5vh;
+}
+
+.description table{
+    width: 100%;
+}
+
+.description table th {
+    font-size: 3.3vh;
+    font-weight: 500;
+    text-align: left;
+    width: 30%;
+}
+
+.description table td {
+    font-size: 3.3vh;
+    font-weight: 450;
+    text-align: center;
+    position: relative;
+}
+
+.description table .primary td::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3vw; 
+    border-bottom: 4px solid #ff0000;
+}
+
+.description table .secondary ul {
+    list-style-type: none;
+    padding: 0; 
+    margin: 0;
+}
+
+.description table .secondary ul li {
+    font-size: 3.3vh;
+    font-weight: 450;
+    display: inline;
+    position: relative;
+}
+
+.description table .secondary ul li::before {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3vw;
+    border-bottom: 4px solid #ff0000; 
+    z-index: -1; 
+  }
+
+.description table .secondary ul li:not(:last-child)::after {
+    content: ', '; 
+    display: inline;
+}
+
+.description table .primary td::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Alinea el subrayado en la parte inferior de la celda */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15%; 
+    border-bottom: 4px solid #ff0000; /* Ajusta el grosor y color según prefieras */
+  }
+
+.this-edition {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.this-edition h2 {
+    font-size: 3.5vh;
+    font-family: "Playfair Display";
+    margin-bottom: 2.2vh;
+}
+
+.this-edition table {
+    width: 100%;
+    border-spacing: 0.5vh;
+}
+
+.this-edition table th {
+    text-align: left;
+    font-size: 3.1vh;
+    font-weight: 500;
+    width: 70%;
+}
+
+.this-edition table td {
+    font-size: 3.1vh;
+    font-weight: 450;
+}
+
+.admin-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-view h2{
+    font-size: 3vh;
+}
+
+.admin-view .admin-btn{
+    display: flex;
+}
+
+.admin-view .admin-btn a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#000;
+    background-color: #ffbd46;
+    width: 20vh;
+    height: 6vh;
+    border-radius: 40px;
+    font-size: 2.5vh;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin: 2vh 2vw;
+}
+
+.admin-view .admin-btn a:hover {
+    color:#000;
+    background-color: #e4a83a;
 }
