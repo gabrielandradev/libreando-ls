@@ -97,7 +97,7 @@ body {
     font-size: 3.3vh;
     font-weight: 500;
     text-align: left;
-    width: 30%;
+    width: 20vw;
 }
 
 .description table td {
@@ -113,7 +113,7 @@ body {
     bottom: 0; 
     left: 50%;
     transform: translateX(-50%);
-    width: 3vw; 
+    width: 15%; 
     border-bottom: 4px solid #ff0000;
 }
 
@@ -136,7 +136,7 @@ body {
     bottom: 0; 
     left: 50%;
     transform: translateX(-50%);
-    width: 3vw;
+    width: 15%;
     border-bottom: 4px solid #ff0000; 
     z-index: -1; 
   }
