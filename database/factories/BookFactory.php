@@ -17,7 +17,7 @@ class BookFactory extends Factory
     {
         return [
             'ubicacion_fisica' => fake()->city(),
-            'titulo' => fake()->title(),
+            'titulo' => fake()->firstName(),
             'isbn' => fake()->isbn13(),
             'editorial' => fake()->firstNameFemale(),
             'año_edicion' => fake()->year(),

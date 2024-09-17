@@ -289,10 +289,14 @@ body {
         font-size: 1rem;
     }
 
-    .admin-view {
-        display: none;
+    .admin-view h2 {
+        font-size: 1.35rem;
     }
-
+    
+    .admin-btn a {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
 }
 
 @media (max-height: 600px) {
@@ -377,7 +381,12 @@ body {
         font-size: 1.5rem;
     }
 
-    .admin-view {
-        display: none;
+    .admin-view h2 {
+        font-size: 1.35rem;
+    }
+    
+    .admin-btn a {
+        font-size: 1.35rem;
+        padding: 12px 40px;
     }
 }
