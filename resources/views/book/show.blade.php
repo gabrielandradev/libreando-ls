@@ -40,7 +40,7 @@
                         <td>
                             <ul>
                                 @foreach ($book->secondaryDescs as $secondary_desc)
-                                    <li>{{$secondary_desc->descriptor}}</li>
+                                    <a href="#"><li>{{$secondary_desc->descriptor}}</li></a>
                                 @endforeach
                             </ul>
                         </td>
