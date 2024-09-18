@@ -7,13 +7,12 @@ body {
     grid-template-columns: 40% 60%;
     align-items: center;
     min-height: 100vh;
-    background-color: #B9C6E1;
+    background-color: #99b1e5;
 }
 
 .content{
     display: flex;
     flex-direction: column;
-    background-color: #B9C6E1;
     height: 100%;
     margin-left: 10%;
     padding-top: 20%;
