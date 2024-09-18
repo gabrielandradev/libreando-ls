@@ -58,14 +58,8 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-bottom: 3%;
 }
-
-.author-field-group-list {
-    background-color: red;
-    width: 100%;
-}
-
-
 
 #desc-container {
     display: flex;
@@ -81,6 +75,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-bottom: 3%;
 }
 
 label {
@@ -94,19 +89,39 @@ input{
     height: 10%;
     border: 3.5px solid #000;
     border-radius: 7px;
-    margin-bottom: 1%;
 }
 
-.add-btn {
-    
-    background-color: #ffffff;
-    background-image: url('../images/book/trash.png');
+.field-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2%;
+    position: relative;
+}
+
+.field-group input {
+    box-sizing: border-box;
+    padding-right: 50px;
+}
+
+.trash-btn {
+    background-color: transparent;
+    background-image: url('../images/book/trash.svg');
     background-size: cover;
-    width: 2vw;
-    height: 2vw;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
     border: none;
     cursor: pointer;
-    text-indent: -9999px;
+}
+
+.trash-btn:hover {
+    background-image: url('../images/book/trash-hover.svg');
 }
 
 .field textarea {
@@ -218,6 +233,23 @@ input{
         flex-direction: column;
     }
 
+    .field-group {
+        flex-direction: column;
+    }
+
+    .field-group input {
+        box-sizing: border-box;
+        padding-right: 0;
+    }
+
+    .trash-btn {
+        width: 45px;
+        height: 45px;
+        top: 75%;
+        right: 7.5%;
+        transform: translateY(-60%);
+    }
+
     .field textarea {
         border: 3 solid #000;
         max-width: 60%;
@@ -246,5 +278,44 @@ input{
     .submit-btn button{
         font-size: 2rem;
         padding: 10% 36%;
+    }
+}
+
+@media (max-height: 600px) {
+    .title {
+        font-size: 2.5rem;   
+    }
+
+    label {
+        font-size: 2.3rem;
+    }
+    
+    input{
+        font-size: 1.9rem;
+    }
+
+    .field-group input {
+        padding-right: 5%;
+    }
+
+    .trash-btn {
+        right: 21%;
+        transform: translateY(-50%);
+    }
+
+    .field textarea {
+        font-size: 1.9rem;
+    }
+    
+    #disponibilidad {
+        font-size: 1.9rem;
+    }
+
+    .btn button {
+        font-size: 1.5rem;
+    }
+
+    .submit-btn button{
+        font-size: 2.5rem;
     }
 }
