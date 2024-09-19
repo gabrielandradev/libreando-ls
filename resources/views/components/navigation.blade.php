@@ -12,7 +12,7 @@
                         <option value="autores">Autores</option>
                     </select>
                 </div>
-                <input type="text" placeholder="Buscar libros, autores, temas" name="search">
+                <input type="text" placeholder="Busca libros, autores, o temas" name="search">
                 <button type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" height="36px" width="36px" viewBox="0 -960 960 960"
                         fill="#e8eaed">
@@ -23,8 +23,8 @@
             </form>
         </div>
         <div class="user-links">
-            <a class="nav-link" href="#login">Iniciar Sesión</a>
-            <a class="nav-link" href="#register">Registrate</a>
+            <a class="nav-link" href="#login">Iniciar sesión</a>
+            <a class="nav-link" href="#register">Registrarse</a>
         </div>
         <div class="menu-icon">
             <button class="menu-toggle">
@@ -32,8 +32,8 @@
             </button>
         </div>
         <div class="dropdown-menu">
-            <a class="nav-link" href="#login">Iniciar Sesión</a>
-            <a class="nav-link" href="#register">Registrate</a>
+            <a class="nav-link" href="#login">Iniciar sesión</a>
+            <a class="nav-link" href="#register">Registrarse</a>
         </div>
     </div>
 </nav>
@@ -45,6 +45,6 @@
 
     menuToggle.addEventListener('click', function () {
         menuIcon.classList.toggle('active');
-        dropdownMenu.classList.toggle('show'); 
+        dropdownMenu.classList.toggle('show');
     });    
 </script>
