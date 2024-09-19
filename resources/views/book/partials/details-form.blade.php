@@ -21,7 +21,7 @@
                     </div>
                 @else
                     @foreach ($book->authors as $author)
-                        <div class="author-field-group-list">
+                        <div class="field-group">
                             <label for="autores-{{$author->id}}">Autor</label>
                             <input type="text" name="autores[]" id="autores-{{$author->id}}" value="{{$author->nombre}}" required>
                         </div>
@@ -95,7 +95,7 @@
                     </div>
                 @else
                     @foreach ($book->secondaryDescs as $secondaryDesc)
-                        <div class="desc-field-group">
+                        <div class="field-group">
                             <label for="desc_secundario-{{$secondaryDesc->id}}">Descriptor secundario</label>
                             <input type="text" name="desc_secundario[]" id="desc_secundario-{{$secondaryDesc->id}}" required
                                 value="{{$secondaryDesc->descriptor}}">
@@ -151,6 +151,7 @@
 <script>
     function addFieldAndGetFieldCount(container, fieldName, displayFieldName, fieldCount) {
         const fieldGroup = document.createElement('div');
+        fieldGroup.classList.add('field-group');
 
         fieldGroup.innerHTML = `
                 <label for="${fieldName}-${fieldCount}">${displayFieldName}</label>
@@ -158,9 +159,9 @@
             `;
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Eliminar';
+        deleteButton.textContent = '';
         deleteButton.type = 'button';
-        deleteButton.classList.add('add-btn'); 
+        deleteButton.classList.add('trash-btn'); 
         deleteButton.onclick = function () {
             fieldGroup.remove();
         };

@@ -40,7 +40,7 @@
                         <td>
                             <ul>
                                 @foreach ($book->secondaryDescs as $secondary_desc)
-                                    <li>{{$secondary_desc->descriptor}}</li>
+                                    <a href="#"><li>{{$secondary_desc->descriptor}}</li></a>
                                 @endforeach
                             </ul>
                         </td>
@@ -90,8 +90,8 @@
             @if (auth()->user()->role->nombre == 'administrador')
                 <h2>Opciones de administrador</h2>
                 <div class="admin-btn">
-                    <a href="{{route('libro_editar', ['book' => $book])}}">Editar</a>
-                    <a href="{{route('libro_borrar', ['book' => $book])}}">Borrar</a>
+                    <a id="edit-btn" href="{{route('libro_editar', ['book' => $book])}}">Editar</a>
+                    <a id="delete-btn" href="{{route('libro_borrar', ['book' => $book])}}">Borrar</a>
                 </div>
             @endif
         @endif
