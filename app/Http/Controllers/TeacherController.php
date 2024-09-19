@@ -57,4 +57,15 @@ class TeacherController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+
+    public function teacherPendingAccounts(): View
+    {
+        $pending = Teacher::select('nombre', 'apellido')
+            ->has('user.pendingAccount')
+            ->simplePaginate(10);
+
+        return view('admin.account_management.teacher_pending', [
+            'accounts_pending' => $pending
+        ]);
+    }
 }

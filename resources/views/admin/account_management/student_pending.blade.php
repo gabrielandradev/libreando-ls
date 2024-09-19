@@ -1,8 +1,8 @@
 <x-app-layout>
-    <h1>Activar cuentas pendientes</h1>
+    <h1>Cuentas de estudiantes pendientes de aprobacion</h1>
     <ul>
         @foreach ($accounts_pending as $account)
-            <li>{{$account->email}}</li>
+            <li>{{$account->apellido}}, {{$account->nombre}}</li>
             <a href="#">Activar</a>
         @endforeach
     </ul>

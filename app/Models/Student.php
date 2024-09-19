@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,5 +40,9 @@ class Student extends Authenticatable
 
     public function shift(): BelongsTo {
         return $this->belongsTo(Shift::class, 'id_turno');
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class, 'id_usuario');
     }
 }

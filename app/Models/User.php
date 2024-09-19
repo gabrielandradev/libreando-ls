@@ -4,11 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -48,14 +48,13 @@ class User extends Authenticatable
         return $this->belongsTo(AccountStatus::class, 'id_estado_cuenta');
     }
 
-    public function isAdmin(): bool {
-        return $this->role->nombre == Role::ROLE_ADMIN;
+    public function pendingAccount(): BelongsTo {
+        return $this
+        ->belongsTo(AccountStatus::class, 'id_estado_cuenta')
+        ->where('estado', AccountStatus::STATUS_PENDING);
     }
 
-    public static function pendingAccounts(int $pagination): LengthAwarePaginator
-    {
-        return self::whereHas('accountStatus', function($query) {
-            $query->where('estado', AccountStatus::STATUS_PENDING);
-        })->paginate($pagination);
+    public function isAdmin(): bool {
+        return $this->role->nombre == Role::ROLE_ADMIN;
     }
 }

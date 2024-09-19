@@ -27,7 +27,9 @@ class BookFactory extends Factory
             'desc_primario' => fake()->lastName(),
             'idioma' => fake()->languageCode(),
             'notas' => fake()->text(),
-            'id_disponibilidad' => BookAvailability::where('estado', BookAvailability::STATUS_AVAILABLE)->first()->id,
+            'id_disponibilidad' => BookAvailability
+                ::where('estado', BookAvailability::STATUS_AVAILABLE)
+                ->first()->id,
             'fecha_creacion' => fake()->date(),
             'fecha_edicion' => fake()->date()
         ];

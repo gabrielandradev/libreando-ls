@@ -67,4 +67,15 @@ class StudentController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+
+    public function studentPendingAccounts(): View
+    {
+        $pending = Student::select('nombre', 'apellido')
+            ->has('user.pendingAccount')
+            ->simplePaginate(10);
+
+        return view('admin.account_management.student_pending', [
+            'accounts_pending' => $pending
+        ]);
+    }
 }

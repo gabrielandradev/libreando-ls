@@ -12,9 +12,18 @@ use App\Models\Role;
 
 class UserController extends Controller
 {
-    public function showPendingAccounts(): View {
+    public function studentPendingAccounts(): View
+    {
 
-        return view('admin.account_management.activate_pending', [
+        return view('admin.account_management.student_pending', [
+            'accounts_pending' => User::pendingAccounts(10)
+        ]);
+    }
+
+    public function teacherPendingAccounts(): View
+    {
+
+        return view('admin.account_management.teacher_pending', [
             'accounts_pending' => User::pendingAccounts(10)
         ]);
     }
@@ -24,16 +33,22 @@ class UserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email:rfc,dns', 'unique:Usuario'],
             'contraseña' => ['required', 'string', Password::defaults()],
+            'rol' => ['not_in:' . Role::ROLE_ADMIN]
         ]);
 
-        $pending_status = AccountStatus::where('estado', AccountStatus::STATUS_PENDING)
-        ->first()->id;
+        $pending_status_id = AccountStatus::where(
+            'estado',
+            AccountStatus::STATUS_PENDING
+        )->first()->id;
+
+        $role_id = Role::where('nombre', $request->rol)
+            ->first()->id;
 
         $user = User::create([
             'email' => $request->email,
             'contraseña' => $request->contraseña,
-            'id_rol' => Role::where('nombre', $request->rol)->first()->id,
-            'id_estado_cuenta' => $pending_status
+            'id_rol' => $role_id,
+            'id_estado_cuenta' => $pending_status_id
         ]);
 
         return $user;
