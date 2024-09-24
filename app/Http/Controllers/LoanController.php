@@ -67,6 +67,7 @@ class LoanController extends Controller
     {
         $pending_loans = Loan::query()
             ->has('pending')
+            ->orderBy('id', 'desc')
             ->simplePaginate(10);
 
         return view('loan.admin.pending', ['loans' => $pending_loans]);
