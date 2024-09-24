@@ -16,12 +16,14 @@ class BookAvailability extends Model
     public const STATUS_BLOCKED = 'bloqueado';
     public const STATUS_SUSPENDED = 'suspendido';
     public const STATUS_ON_LOAN = 'prestado';
+    public const STATUS_ON_PERSON = 'en sala';
 
     public const STATUSES = [
         self::STATUS_AVAILABLE,
         self::STATUS_BLOCKED,
         self::STATUS_SUSPENDED,
-        self::STATUS_ON_LOAN
+        self::STATUS_ON_LOAN,
+        self::STATUS_ON_PERSON
     ];
 
     protected $fillable = [

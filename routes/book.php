@@ -16,11 +16,20 @@ Route::get(
 )->name('autor');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/libros/{book}/solicitar-prestamo', 
-    [LoanController::class, 'create'])->name('solicitar.prestamo');
+    Route::get(
+        '/libros/{book}/solicitar-prestamo',
+        [LoanController::class, 'create']
+    )->name('solicitar.prestamo');
 
-    Route::post('/libros/{book}/solicitar-prestamo', 
-    [LoanController::class, 'store'])->name('solicitar.prestamo.generar');
+    Route::post(
+        '/libros/{book}/solicitar-prestamo',
+        [LoanController::class, 'store']
+    )->name('solicitar.prestamo.generar');
+
+    Route::post(
+        '/prestamos/{loan}/pdf',
+        [LoanController::class, 'toPDF']
+    )->name('prestamo.generado.pdf');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
