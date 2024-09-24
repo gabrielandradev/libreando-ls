@@ -9,10 +9,13 @@
         <div class="loan-item">
             <a href="{{route('libro', $loan->book->id)}}">
                 <h2>{{$loan->book->titulo}}</h2>
-                <strong>Ubicación física: {{$loan->book->ubicacion_fisica}}</strong>
+                </a>
                 <p>Solicitado el {{$loan->fecha_solicitud}}</p>
                 <p>Estado de solicitud: {{$loan->loanStatus->estado}}</p>
-            </a>
+                <form action="{{route('prestamo.generado.pdf', $loan->id)}}" method="post">
+                    @csrf
+                    <button>Descargar comprobante</button>
+                </form>
         </div>
         @endforeach
 

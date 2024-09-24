@@ -7357,16 +7357,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "15.7.4",
+            "version": "15.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "beb11ef914b2f9a007df55f91073d96794b693e4"
+                "reference": "108986615e7f47fbb39f6bf8fe36d302f72afee4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/beb11ef914b2f9a007df55f91073d96794b693e4",
-                "reference": "beb11ef914b2f9a007df55f91073d96794b693e4",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/108986615e7f47fbb39f6bf8fe36d302f72afee4",
+                "reference": "108986615e7f47fbb39f6bf8fe36d302f72afee4",
                 "shasum": ""
             },
             "require": {
@@ -7416,7 +7416,7 @@
                 "issues": "https://github.com/Laravel-Lang/lang/issues",
                 "source": "https://github.com/Laravel-Lang/lang"
             },
-            "time": "2024-09-18T09:33:24+00:00"
+            "time": "2024-09-24T17:12:47+00:00"
         },
         {
             "name": "laravel-lang/locale-list",
@@ -8075,16 +8075,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "eb2bcbd85034c1a508cf409b7ee318eb3137f090"
+                "reference": "35c00c05ec43e6b46d295efc0f4386ceb30d50d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/eb2bcbd85034c1a508cf409b7ee318eb3137f090",
-                "reference": "eb2bcbd85034c1a508cf409b7ee318eb3137f090",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/35c00c05ec43e6b46d295efc0f4386ceb30d50d9",
+                "reference": "35c00c05ec43e6b46d295efc0f4386ceb30d50d9",
                 "shasum": ""
             },
             "require": {
@@ -8137,7 +8137,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2024-09-24T15:48:42+00:00"
+            "time": "2024-09-24T17:22:50+00:00"
         },
         {
             "name": "laravel/sail",

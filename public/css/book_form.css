@@ -75,11 +75,11 @@ body {
     margin-bottom: 3%;
 }
 
-label {
+.container label {
     font-size: 1.35rem;
 }
 
-input{
+.container input {
     font-size: 1.35rem;
     padding: 8px;
     width: 100%;
