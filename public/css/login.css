@@ -64,7 +64,7 @@ section {
 }
 
 .user-login input{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 8px 8px;
     width: 95%;
     border: 3px solid #000;
@@ -72,7 +72,7 @@ section {
 }
 
 .user-login input::placeholder{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
 }
 
