@@ -80,4 +80,16 @@ class LoanController extends Controller
 
         return view('profile.loans', ['loans' => $user_loans]);
     }
+
+    public function showLoanActivator(Loan $loan): View {
+        return view('loan.activate', [
+            'loan' => $loan,
+            'date_now' => Carbon::now()->format('Y-m-d')
+        ]);
+    }
+
+    // Activate loan
+    public function loan() {
+
+    }
 }
