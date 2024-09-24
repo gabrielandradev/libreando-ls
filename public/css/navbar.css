@@ -163,14 +163,18 @@ body {
     display: flex;
 }
 
+.menu-icon-active {
+    display: flex !important;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
 /* Para pantallas pequeñas (menores a 768px) */
 @media screen and (max-width: 768px) {
-    .menu-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-    }
 
     .user-links {
         display: none;
@@ -187,9 +191,9 @@ body {
         display: none;
     }
 
-    .dropdown-menu {
-        display: none !important; /* Asegura que el dropdown no aparezca en pantallas grandes */
-    }
+    /* .dropdown-menu {
+        display: none !important; 
+    } */
 }
 
 @media screen and (max-width: 600px){

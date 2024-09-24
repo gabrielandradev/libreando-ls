@@ -22,19 +22,44 @@
                 </button>
             </form>
         </div>
-        <div class="user-links">
-            <a class="nav-link" href="#login">Iniciar sesión</a>
-            <a class="nav-link" href="#register">Registrarse</a>
-        </div>
-        <div class="menu-icon">
+
+        @guest
+            <div class="user-links">
+                <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
+                <a class="nav-link" href="{{ route('registrarse') }}">Registrarse</a>
+            </div>
+
+        @endguest
+
+        <div @class(['menu-icon', 'menu-icon-active' => Auth::check()])>
             <button class="menu-toggle">
                 <img src="{{asset('images/icons/user.png')}}" alt="Logo">
             </button>
         </div>
-        <div class="dropdown-menu">
-            <a class="nav-link" href="#login">Iniciar sesión</a>
-            <a class="nav-link" href="#register">Registrarse</a>
-        </div>
+
+
+        @auth
+            <div class="dropdown-menu">
+                <a class="nav-link" href="{{ route('registrarse') }}">Mis Datos</a>
+                <a class="nav-link" href="{{ route('registrarse') }}">Mis Prestamos</a>
+                <a class="nav-link" href="{{ route('registrarse') }}">Mi Lista</a>
+                <a class="nav-link" href="{{ route('registrarse') }}">Configuración</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a href="route('logout')" onclick="event.preventDefault();
+                    this.closest('form').submit();" class="nav-link">
+                        Cerrar sesion
+                    </a>
+                </form>
+            </div>
+        @endauth
+        @guest
+            <div class="dropdown-menu">
+                <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
+                <a class="nav-link" href="registrarse">Registrarse</a>
+            </div>
+        @endguest
     </div>
 </nav>
 
