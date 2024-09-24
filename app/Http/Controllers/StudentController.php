@@ -70,7 +70,7 @@ class StudentController extends Controller
 
     public function studentPendingAccounts(): View
     {
-        $pending = Student::select('nombre', 'apellido')
+        $pending = Student::query()
             ->has('user.pendingAccount')
             ->simplePaginate(10);
 

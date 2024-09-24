@@ -3,16 +3,7 @@
         <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @endpush
     
-    @if (auth()->check())
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <a href="route('logout')" onclick="event.preventDefault();
-                this.closest('form').submit();">
-                Cerrar sesion
-            </a>
-        </form>
-    @endif
+    <a href="{{route('perfil.prestamos')}}">Mis prestamos</a>
     <div class="container">
         <div class="content">
             <div class="tittle">

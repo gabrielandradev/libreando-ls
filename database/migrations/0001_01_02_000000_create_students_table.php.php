@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('apellido');
             $table->string('nombre');
             $table->tinyInteger('año');
-            $table->tinyInteger('division');
+            $table->string('division');
             $table->string('domicilio');
             $table->string('telefono');
             $table->foreignId('id_turno');

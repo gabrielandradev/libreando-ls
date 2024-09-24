@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class User extends Authenticatable
@@ -46,6 +47,10 @@ class User extends Authenticatable
     public function accountStatus(): BelongsTo
     {
         return $this->belongsTo(AccountStatus::class, 'id_estado_cuenta');
+    }
+
+    public function loans(): HasMany {
+        return $this->hasMany(Loan::class, 'id_usuario');
     }
 
     public function pendingAccount(): BelongsTo {

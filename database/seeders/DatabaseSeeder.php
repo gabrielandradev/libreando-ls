@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
         $usuarios = User::factory()->count(10)->make();
         DB::table('Usuario')->insert($usuarios->toArray());
 
+        // $estudiantes = Student::factory()->count(10)->make();
+        // DB::table('Estudiante')->insert($estudiantes->toArray());
+
+        // $profesores = Teacher::factory()->count(10)->make();
+        // DB::table('Profesor')->insert($profesores->toArray());
+
         $libros = Book::factory()->count(10)->make();
         DB::table('Libro')->insert($libros->toArray());
 

@@ -11,7 +11,10 @@
             </div>
             
             <div class="available-btn">
-                <button type="submit">DISPONIBLE</button>
+                <form action="{{route('solicitar-prestamo', $book->id)}}" method="post">
+                    @csrf
+                    <button type="submit">{{$book->availability->estado}}</button>
+                </form>
             </div>
             
             <div class="add-list-btn">
@@ -87,11 +90,14 @@
     
     <div class="admin-view">
         @if (auth()->check())
-            @if (auth()->user()->role->nombre == 'administrador')
+            @if (auth()->user()->isAdmin())
                 <h2>Opciones de administrador</h2>
                 <div class="admin-btn">
                     <a id="edit-btn" href="{{route('libro_editar', ['book' => $book])}}">Editar</a>
-                    <a id="delete-btn" href="{{route('libro_borrar', ['book' => $book])}}">Borrar</a>
+                    <form action="{{route('libro_borrar', $book->id)}}" method="post">
+                        @csrf
+                        <button id="delete-btn">Borrar</button>
+                    </form>
                 </div>
             @endif
         @endif

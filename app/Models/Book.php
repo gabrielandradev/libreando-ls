@@ -5,10 +5,6 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Author;
-use App\Models\BookAuthor;
-use App\Models\BookSecondaryDesc;
-use App\Models\SecondaryDesc;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -46,5 +42,9 @@ class Book extends Model
 
     public function secondaryDescs(): BelongsToMany {
         return $this->belongsToMany(SecondaryDesc::class, 'Libro_Descriptor_Secundario', 'id_libro', 'id_descriptor_sec');
+    }
+
+    public function availability(): BelongsTo {
+        return $this->belongsTo(BookAvailability::class, 'id_disponibilidad');
     }
 }

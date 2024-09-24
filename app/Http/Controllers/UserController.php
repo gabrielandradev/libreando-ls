@@ -9,6 +9,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 use App\Models\AccountStatus;
 use App\Models\Role;
+use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -52,5 +53,22 @@ class UserController extends Controller
         ]);
 
         return $user;
+    }
+
+    public function activate(User $user): RedirectResponse {
+        $active_status_id = AccountStatus::where(
+            'estado',
+            AccountStatus::STATUS_ACTIVE
+        )->first()->id;
+
+        $user->id_estado_cuenta = $active_status_id;
+        $user->save();
+
+        return redirect()->back();
+    }
+
+    public function destroy(User $user): RedirectResponse {
+        $user->delete();
+        return redirect()->back();
     }
 }

@@ -7,13 +7,9 @@ use App\Models\AccountStatus;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoanController;
 
 Route::get("/", [DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('/secret', function () {
-    return view('secret');
-})->middleware(['auth', 'admin'])
-    ->name("secreto");
 
 Route::get('/cuenta/bloqueada', function () {
     return view('profile.blocked');
@@ -23,17 +19,10 @@ Route::get('/cuenta/pendiente', function () {
     return view('profile.pending');
 })->name('pending');
 
-Route::get(
-    '/libros/{book}',
-    [BookController::class, 'show']
-)->name('libro');
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil/prestamos',
+    [LoanController::class, 'userLoans'])->name('perfil.prestamos');
 
-Route::get(
-    '/autores/{author}',
-    [AuthorController::class, 'show']
-)->name('autor');
-
-// // Route::middleware('auth')->group(function () {
 // //     Route::get('/profile', 
 // [ProfileController::class, 'edit'])->name('profile.edit');
 // //     Route::patch('/profile', 
@@ -44,7 +33,8 @@ Route::get(
 
 // Route::middleware(['auth', ])->group(function () {
 //     Route::get('/admin/dashboard', 'AdminController@dashboard');
-// });
+});
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
+require __DIR__ . '/book.php';

@@ -9,7 +9,7 @@
         Mail<input type="email" name="email" value="{{ old('email') }}"><br>
         Crea una contraseña<input type="password" name="contraseña" autocomplete="new-password"><br>
         Telefono<input type="text" name="telefono" value="{{ old('telefono') }}"><br>
-        Año<select name="año" value="{{ old('año') }}" required>
+        Año<select name="año" required>
             <option value="">Selecciona una opción</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -19,7 +19,7 @@
             <option value="6">6</option>
         </select><br>
         División<input type="text" name="division" value="{{ old('division') }}"><br>
-        Especialidad<select name="especialidad" value="{{ old('especialidad') }}" required>
+        Especialidad<select name="especialidad"  required>
             <option value="">Selecciona una opción</option>
             <option value="construcciones">Construcciones</option>
             <option value="computacion">Computación</option>

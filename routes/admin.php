@@ -8,31 +8,6 @@ use App\Http\Controllers\StudentController;
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get(
-        '/admin/crear/libro',
-        [BookController::class, 'create']
-    )->name('libro_crear');
-
-    Route::post(
-        '/admin/crear/libro',
-        [BookController::class, 'store']
-    )->name('libro_crear');
-
-    Route::get(
-        '/libros/{book}/editar',
-        [BookController::class, 'edit']
-    )->name('libro_editar');
-
-    Route::post(
-        '/libros/{book}/editar',
-        [BookController::class, 'update']
-    )->name('libro_editar');
-
-    Route::post(
-        '/libros/{book}/borrar',
-        [BookController::class, 'edit']
-    )->name('libro_borrar');
-
-    Route::get(
         '/admin/usuarios/profesores/pendientes',
         [TeacherController::class, 'teacherPendingAccounts']
     )->name('profesores_pendientes');
@@ -41,4 +16,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
         '/admin/usuarios/estudiantes/pendientes',
         [StudentController::class, 'studentPendingAccounts']
     )->name('estudiantes_pendientes');
+
+    Route::post('/admin/activar/{user}',
+    [UserController::class, 'activate']
+    )->name('activar-usuario');
+
+    Route::post('/admin/eliminar/{user}',
+    [UserController::class, 'destroy']
+    )->name('eliminar-usuario');
 });

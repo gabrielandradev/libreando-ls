@@ -16,13 +16,13 @@ class StudentFactory extends Factory
     {
         return [
             'dni' => fake()->unique()->numberBetween(40000000, 60000000),
-            'id_usuario' => fake()->unique()->numberBetween(1, 10000),
+            'id_usuario' => fake()->unique()->numberBetween(1, 50),
             'apellido' => fake()->lastName(),
             'nombre' => fake()->firstName(),
             'año' => fake()->numberBetween(1, 6),
             'division' => fake()->numberBetween(1, 10),
-            'turno' => Shift::SHIFT_MORNING,
-            'especialidad' => Major::MAJOR_COMPUTACION,
+            'id_turno' => fake()->numberBetween(0, 1),
+            'id_especialidad' => fake()->numberBetween(0, 5),
             'telefono' => fake()->phoneNumber(),
             'domicilio' => fake()->address(),
         ];
