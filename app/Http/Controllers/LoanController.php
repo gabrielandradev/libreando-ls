@@ -67,6 +67,7 @@ class LoanController extends Controller
     {
         $pending_loans = Loan::query()
             ->has('pending')
+            ->orderBy('id', 'desc')
             ->simplePaginate(10);
 
         return view('loan.admin.pending', ['loans' => $pending_loans]);
@@ -78,5 +79,17 @@ class LoanController extends Controller
             ->simplePaginate(10);
 
         return view('profile.loans', ['loans' => $user_loans]);
+    }
+
+    public function showLoanActivator(Loan $loan): View {
+        return view('loan.activate', [
+            'loan' => $loan,
+            'date_now' => Carbon::now()->format('Y-m-d')
+        ]);
+    }
+
+    // Activate loan
+    public function loan() {
+
     }
 }
