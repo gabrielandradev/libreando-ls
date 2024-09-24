@@ -60,9 +60,11 @@ class LoanController extends Controller
             ['loan' => $loan]
         );
 
-        return $pdf->download("libreando-solicitud-prestamo-" . $loan->fecha_solicitud . "-" . $loan->id . ".pdf");
-    }
+        $filename = "libreando-solicitud-prestamo-$loan->fecha_solicitud-$loan->id.pdf";
 
+        return $pdf->download( $filename);
+    }
+  
     public function pending(): View
     {
         $pending_loans = Loan::query()
