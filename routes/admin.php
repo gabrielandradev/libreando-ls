@@ -14,9 +14,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
     )->name('gestionar.solicitudes.prestamo');
 
     Route::get(
+        '/admin/prestamos',
+        [LoanController::class, 'active']
+    )->name('admin.prestamos.activos');
+
+    Route::get(
         '/admin/prestar/{loan}',
         [LoanController::class, 'showLoanActivator']
     )->name('prestamo.procesar');
+
+    Route::put(
+        '/admin/prestar/handler/{loan}',
+        [LoanController::class, 'loan']
+    )->name('prestar-libro');
 
     Route::get(
         '/admin/usuarios/profesores/pendientes',

@@ -81,15 +81,45 @@ class LoanController extends Controller
         return view('profile.loans', ['loans' => $user_loans]);
     }
 
-    public function showLoanActivator(Loan $loan): View {
+    public function active(): View
+    {
+        $active_loans = Loan::query()
+            ->has('onLoan')
+            ->orderBy('id', 'desc')
+            ->simplePaginate(10);
+
+        return view('loan.admin.active', ['loans' => $active_loans]);
+    }
+
+    public function showLoanActivator(Loan $loan): View
+    {
         return view('loan.activate', [
             'loan' => $loan,
             'date_now' => Carbon::now()->format('Y-m-d')
         ]);
     }
 
-    // Activate loan
-    public function loan() {
+    public function loan(LoanRequest $request): RedirectResponse
+    {
+        if ($request->loan()->book->availability->estado != BookAvailability::STATUS_AVAILABLE) {
+            abort(403, 'Unauthorized action.');
+        }
 
+        $request->loan()->fecha_prestamo = $request->fecha_prestamo;
+        $request->loan()->fecha_devolucion = $request->fecha_devolucion;
+        $request->loan()->id_estado_prestamo = LoanStatus::where(
+            'estado',
+            LoanStatus::STATUS_ON_LOAN
+        )->first()->id;
+
+        $request->loan()->book->id_disponibilidad = BookAvailability::where(
+            'estado',
+            BookAvailability::STATUS_ON_LOAN
+        )->first()->id;
+
+        $request->loan()->save();
+        $request->loan()->book->save();
+
+        return redirect()->intended(route('admin.prestamos.activos', absolute: false));
     }
 }

@@ -18,8 +18,8 @@ class LoanRequest extends FormRequest
         return [
             'id_libro' => ['required', 'integer', 'exists:Libro'],
             'id_usuario' => ['required', 'integer', 'exists:Usuario'],
-            'fecha_prestamo' => ['date'],
-            'fecha_devolucion' => ['date'],
+            'fecha_prestamo' => ['date', 'required'],
+            'fecha_devolucion' => ['date', 'required'],
             'id_estado_prestamo' => ['required', 'integer', 'exists:Estado_Prestamo']
         ];
     }

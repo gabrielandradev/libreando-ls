@@ -44,4 +44,10 @@ class Loan extends Model
         ->belongsTo(LoanStatus::class, 'id_estado_prestamo')
         ->where('estado', LoanStatus::STATUS_PENDING);
     }
+
+    public function onLoan(): BelongsTo {
+        return $this
+        ->belongsTo(LoanStatus::class, 'id_estado_prestamo')
+        ->where('estado', LoanStatus::STATUS_ON_LOAN);
+    }
 }
