@@ -10,7 +10,7 @@
         <br>
         <label for="fecha_devolucion">
             Fecha de devolución:
-            <input type="date" name="fecha_devolucion" id="date" required value="{{$date_now}}">
+            <input type="date" name="fecha_devolucion" id="date" required value="{{$date_now}}" min="{{$date_now}}">
         </label>
         <br>
         <small>Al prestar, el artículo se marcará automáticamente como "prestado", y no estará disponible para nuevos préstamos</small>
