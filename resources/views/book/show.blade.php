@@ -46,7 +46,7 @@
                 @endforeach
             </div>
 
-            <div class="description">
+            <div class="this-edition">
                 <table>
                     <tr class="primary">
                         <th>TEMA</th>
