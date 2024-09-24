@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="{{ asset('css/book_form.css') }}">
 @endpush
 <div class="container">
-    <form class="book-form" action="{{route('libro_crear')}}" method="POST">
+    <form class="book-form" action="{{route('libro.store')}}" method="POST">
         @csrf
         <h2 class="title">Datos generales</h2>
         <div class="separator"></div>

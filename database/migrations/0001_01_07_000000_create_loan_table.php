@@ -10,13 +10,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Prestamo', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('id_libro');
             $table->foreignId('id_usuario');
             $table->date('fecha_solicitud');
             $table->date('fecha_prestamo')->nullable();
             $table->date('fecha_devolucion')->nullable();
             $table->foreignId('id_estado_prestamo');
-
 
             $table->unique(['id_libro', 'id_usuario']);
 

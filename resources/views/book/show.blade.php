@@ -4,6 +4,21 @@
         <link rel="stylesheet" href="{{ asset('css/book_show.css') }}">
     @endpush
 
+    <div class="admin-view">
+        @auth
+            @if (auth()->user()->isAdmin())
+                <h2>Opciones de administrador</h2>
+                <div class="admin-btn">
+                    <a id="edit-btn" href="{{route('libro.editar', ['book' => $book])}}">Editar</a>
+                    <form action="{{route('libro.destroy', $book->id)}}" method="post">
+                        @csrf
+                        <button id="delete-btn">Borrar</button>
+                    </form>
+                </div>
+            @endif
+        @endauth
+    </div>
+
     <div class="container">
         <div class="book-cover">
             <div class= "cover">
@@ -11,7 +26,7 @@
             </div>
             
             <div class="available-btn">
-                <form action="{{route('solicitar-prestamo', $book->id)}}" method="post">
+                <form action="{{route('solicitar.prestamo', $book->id)}}" method="get">
                     @csrf
                     <button type="submit">{{$book->availability->estado}}</button>
                 </form>
@@ -86,20 +101,5 @@
             </div>
             
         </div>
-    </div>
-    
-    <div class="admin-view">
-        @if (auth()->check())
-            @if (auth()->user()->isAdmin())
-                <h2>Opciones de administrador</h2>
-                <div class="admin-btn">
-                    <a id="edit-btn" href="{{route('libro_editar', ['book' => $book])}}">Editar</a>
-                    <form action="{{route('libro_borrar', $book->id)}}" method="post">
-                        @csrf
-                        <button id="delete-btn">Borrar</button>
-                    </form>
-                </div>
-            @endif
-        @endif
     </div>
 </x-guest-layout>

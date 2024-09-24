@@ -3,7 +3,6 @@
         <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @endpush
     
-    <a href="{{route('perfil.prestamos')}}">Mis prestamos</a>
     <div class="container">
         <div class="content">
             <div class="tittle">

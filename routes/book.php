@@ -16,34 +16,37 @@ Route::get(
 )->name('autor');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/libros/{book}/solicitar-prestamo', 
+    [LoanController::class, 'create'])->name('solicitar.prestamo');
+
     Route::post('/libros/{book}/solicitar-prestamo', 
-    [LoanController::class, 'create'])->name('solicitar-prestamo');
+    [LoanController::class, 'store'])->name('solicitar.prestamo.generar');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get(
-        '/libros/crear',
+        '/admin/crear/libro',
         [BookController::class, 'create']
-    )->name('libro_crear');
+    )->name('libro.crear');
 
     Route::post(
-        '/libros/crear',
+        '/admin/crear/libro',
         [BookController::class, 'store']
-    )->name('libro_crear');
+    )->name('libro.store');
 
     Route::get(
         '/libros/{book}/editar',
         [BookController::class, 'edit']
-    )->name('libro_editar');
+    )->name('libro.editar');
 
     Route::post(
         '/libros/{book}/editar',
         [BookController::class, 'update']
-    )->name('libro_editar');
+    )->name('libro.update');
 
     Route::post(
         '/libros/{book}/borrar',
         [BookController::class, 'destroy']
-    )->name('libro_borrar');
+    )->name('libro.destroy');
 
 });

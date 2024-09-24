@@ -27,11 +27,16 @@ class LoanController extends Controller
         return view("loan.create", compact('book'));
     }
 
-    public function store(LoanRequest $request): RedirectResponse
+    public function store(Book $book): RedirectResponse
     {
+        // TODO: (!$book->isAvailable())
+        if ($book->availability->estado != BookAvailability::STATUS_AVAILABLE) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $loan = Loan::create([
-            'id_libro' => $request->id_libro,
-            'id_usuario' => $request->id_usuario,
+            'id_libro' => $book->id,
+            'id_usuario' => Auth::user()->id,
             'fecha_solicitud' => Carbon::now()->format('Y-m-d'),
             'fecha_prestamo' => null,
             'fecha_devolucion' => null,
@@ -40,7 +45,15 @@ class LoanController extends Controller
             ->first()->id
         ]);
 
-        return redirect(route('loan.user.show', absolute: false));
+        return redirect(route('perfil.prestamos', absolute: false));
+    }
+
+    public function pending(): View {
+        $pending_loans = Loan::query()
+        ->has('pending')
+        ->simplePaginate(10);
+
+        return view('loan.admin.pending', ['loans' => $pending_loans]);
     }
 
     public function userLoans(): View {
