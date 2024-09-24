@@ -134,11 +134,10 @@ body {
     position: relative;
 }
 
-/* Para el menú desplegable */
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 6rem; /* Ajusta según la altura de tu navbar */
+    top: 6rem;
     right: 1.5rem;
     background-color: #99b1e5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -158,7 +157,6 @@ body {
     background-color: #ddd;
 }
 
-/* Mostrar el menú desplegable cuando esté activo */
 .menu-icon.active + .dropdown-menu {
     display: flex;
 }
@@ -173,7 +171,7 @@ body {
     cursor: pointer;
     padding: 0;
 }
-/* Para pantallas pequeñas (menores a 768px) */
+
 @media screen and (max-width: 768px) {
 
     .user-links {
@@ -185,15 +183,10 @@ body {
     }
 }
 
-/* Para pantallas grandes (mayores a 768px) */
 @media screen and (min-width: 769px) {
     .menu-icon {
         display: none;
     }
-
-    /* .dropdown-menu {
-        display: none !important; 
-    } */
 }
 
 @media screen and (max-width: 600px){
