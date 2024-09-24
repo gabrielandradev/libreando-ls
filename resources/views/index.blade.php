@@ -7,7 +7,7 @@
         <div class="content">
             <div class="tittle">
                 <h2>Mar-Team presenta</h2>
-                <h1>Proyecto Biblioteca</h1>
+                <h1>Proyecto<br>Biblioteca</h1>
             </div>
             <div class="text">
                 <p>Descubre nuestra amplia <br>

@@ -43,7 +43,7 @@ section {
 }
 
 .loginbox h1{
-    font-size: 3.4rem;
+    font-size: 2.5rem;
     text-align: center;
     padding-bottom: 4vh;
 }
@@ -64,15 +64,15 @@ section {
 }
 
 .user-login input{
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     padding: 8px 8px;
     width: 95%;
-    border: 4px solid #000;
+    border: 3px solid #000;
     border-radius: 7px;
 }
 
 .user-login input::placeholder{
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -129,12 +129,12 @@ section {
     align-items: center;
     color:#000;
     background-color: #9bb3e8;
-    padding: 2.5% 12%;
+    padding: 2.5% 6%;
     margin: 50px auto;
     border-radius: 40px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    border: 4px solid #000;
+    border: 3px solid #000;
     cursor: pointer;
 }
 

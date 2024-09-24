@@ -42,7 +42,7 @@
 
             <div class="autors">
                 @foreach ($book->authors as $author)
-                     <a href="{{route('autor', [$author->id])}}">{{$author->nombre}}</a>,
+                     <a href="{{route('autor', [$author->id])}}">{{$author->nombre}},</a>
                 @endforeach
             </div>
 

@@ -63,12 +63,11 @@ body {
         display: grid;
         grid-template-columns: 40% 60%;
         align-items: center;
-        background-color: #B9C6E1;
     }
 
     .content{
         margin-left: 10%;
-        padding-top: 26%;
+        padding-top: 10%;
     }
 
     .tittle {
@@ -107,7 +106,7 @@ body {
 
     .image {
         height: 100vh;
-        margin-top: -20%;
+        padding-top: -20%;
     }
 
     .image img{
@@ -183,7 +182,6 @@ body {
         display: grid;
         grid-template-columns: 40% 60%;
         align-items: center;
-        background-color: #B9C6E1;
     }
 
     .content{
@@ -241,12 +239,11 @@ body {
 
 }
 
-@media (max-height: 720px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .container {
         display: grid;
         grid-template-columns: 40% 60%;
         align-items: center;
-        background-color: #B9C6E1;
     }
 
     .content{
@@ -264,7 +261,7 @@ body {
     }
 
     .tittle h2{
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 550;
         width: 80%;
         padding-left: 10%;
