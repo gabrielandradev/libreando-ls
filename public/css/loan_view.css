@@ -1,0 +1,32 @@
+.loan-title {
+    padding: 2rem;
+}
+
+.loan-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.loan-item a:hover {
+    text-decoration: underline;
+}
+
+.loan-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loan-item {
+    display: block;
+    background-color: #f8f8f8;
+    margin: 2vh 4vw;
+    padding: 2vh 4vw;
+    border-radius: 4rem;
+    width: 60vw;
+}
+
+@media screen and (max-width: 815px){
+    .loan-section {
+        display: block;
+    }
+}
