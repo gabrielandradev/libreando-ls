@@ -49,5 +49,9 @@
                 </li>
             </ul>
         @endforeach
+
+        @foreach ($books as $book)
+             <a href="{{route('libro', [$book->id])}}">{{$book->titulo}}, </a>
+        @endforeach
     </div>
 </x-guest-layout>
