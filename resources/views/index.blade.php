@@ -23,6 +23,22 @@
         </div>
     </div>
 
+    <div class="container-bottom">
+        <div class="image-bottom">
+            <img src="{{ asset('images/index/niños_grupo_2.png') }}" > </img>
+        </div>
+        <div class="text-bottom">
+                <p>Navega por nuestra colección, <br>
+                    explora las diferentes<br>
+                    categorías y encuentra el<br>
+                    libro perfecto para ti. Pídelo<br>
+                    ahora en nuestra biblioteca y<br>
+                    comienza tu viaje de lectura<br>
+                    hoy mismo
+                </p>
+        </div>
+    </div>
+
 
     <div class="books">
         <h2>Todos los libros</h2>
