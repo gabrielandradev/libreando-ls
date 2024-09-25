@@ -77,10 +77,7 @@ class LoanController extends Controller
 
     public function userLoans(): View
     {
-        $user_loans = Loan::where('id_usuario', Auth::user()->id)
-            ->simplePaginate(10);
-
-        return view('profile.loans', ['loans' => $user_loans]);
+        return view('profile.loans', ['loans' => Auth::user()->loans]);
     }
 
     public function active(): View
