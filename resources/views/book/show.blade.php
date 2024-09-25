@@ -5,8 +5,7 @@
     @endpush
 
     <div class="admin-view">
-        @auth
-            @if (auth()->user()->isAdmin())
+        @admin
                 <h2>Opciones de administrador</h2>
                 <div class="admin-btn">
                     <a id="edit-btn" href="{{route('libro.editar', ['book' => $book])}}">Editar</a>
@@ -15,8 +14,7 @@
                         <button id="delete-btn">Borrar</button>
                     </form>
                 </div>
-            @endif
-        @endauth
+        @endadmin
     </div>
 
     <div class="container">
