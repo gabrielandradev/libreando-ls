@@ -42,7 +42,7 @@
             <div class="dropdown-menu">
                 <a class="nav-link" href="{{ route('registrarse') }}">Mi perfil</a>
                 <a class="nav-link" href="{{route('perfil.prestamos')}}">Mis préstamos</a>
-                <a class="nav-link" href="{{ route('registrarse') }}">Mi lista</a>
+                <a class="nav-link" href="{{ route('wishlist.ver') }}">Mi lista</a>
                 <a class="nav-link" href="{{ route('registrarse') }}">Configuración</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

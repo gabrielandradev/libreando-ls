@@ -7,6 +7,7 @@ use App\Models\AccountStatus;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\LoanController;
 
 Route::get("/", [DashboardController::class, 'index'])->name('dashboard');
@@ -33,6 +34,15 @@ Route::middleware('auth')->group(function () {
 
 // Route::middleware(['auth', ])->group(function () {
 //     Route::get('/admin/dashboard', 'AdminController@dashboard');
+    Route::get(
+        '/perfil/wishlist',
+        [WishlistController::class, 'show']
+    )->name('wishlist.ver');
+
+    Route::post(
+        '/perfil/wishlist/{book}',
+        [WishlistController::class, 'store']
+    )->name('wishlist.agregar');
 });
 
 require __DIR__ . '/auth.php';

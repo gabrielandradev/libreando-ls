@@ -59,6 +59,10 @@ class User extends Authenticatable
         ->where('estado', AccountStatus::STATUS_PENDING);
     }
 
+    public function wishlist(): HasMany {
+        return $this->hasMany(Wishlist::class, 'id_usuario');
+    }
+
     public function isAdmin(): bool {
         return $this->role->nombre == Role::ROLE_ADMIN;
     }

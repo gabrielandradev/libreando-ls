@@ -33,7 +33,10 @@
             </div>
             
             <div class="add-list-btn">
-                <button type="submit">AGREGAR A LA LISTA</button>
+                <form action="{{route('wishlist.agregar', $book->id)}}" method="post">
+                    @csrf
+                    <button type="submit">AGREGAR A LA LISTA</button>
+                </form>
             </div>
         </div>
         
