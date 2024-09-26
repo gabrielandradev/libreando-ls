@@ -58,6 +58,34 @@ body {
     height: auto;
 }
 
+.container-bottom {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.image-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.image-bottom img{
+    width: 90%;
+    height: auto;
+}
+
+.text-bottom {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.25;
+}
+
 @media (max-height: 800px) {
     .container {
         display: grid;

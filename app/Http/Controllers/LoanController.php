@@ -60,9 +60,11 @@ class LoanController extends Controller
             ['loan' => $loan]
         );
 
-        return $pdf->download("libreando-solicitud-prestamo-" . $loan->fecha_solicitud . "-" . $loan->id . ".pdf");
-    }
+        $filename = "libreando-solicitud-prestamo-$loan->fecha_solicitud-$loan->id.pdf";
 
+        return $pdf->download( $filename);
+    }
+  
     public function pending(): View
     {
         $pending_loans = Loan::query()
@@ -75,10 +77,7 @@ class LoanController extends Controller
 
     public function userLoans(): View
     {
-        $user_loans = Loan::where('id_usuario', Auth::user()->id)
-            ->simplePaginate(10);
-
-        return view('profile.loans', ['loans' => $user_loans]);
+        return view('profile.loans', ['loans' => Auth::user()->loans]);
     }
 
     public function active(): View
