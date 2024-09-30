@@ -14,21 +14,21 @@ class WishlistController extends Controller
 {
     public function store(Book $book): RedirectResponse
     {
-        $wishlist = Wishlist::create([
+        Wishlist::firstOrCreate([
             'id_usuario' => Auth::user()->id,
             'id_libro' => $book->id
         ]);
-
-        // return redirect()->intended(route('dashboard', absolute: false));
-        // return view('wishlist.agregar', ['wishlist' => $wishlist]);
-        return redirect()->route('dashboard');
+        return redirect()->back();
     }
 
     public function show(): View
     {
-        // $wishlist = Wishlist::where('id_usuario', Auth::user()->id)
-        // ->simplePaginate(10);
-
         return view('wishlist.ver', ['book_list' => Auth::user()->wishlist]);
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        Wishlist::where('id', $id)->firstorfail()->delete();
+        return redirect()->back();
     }
 }
