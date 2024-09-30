@@ -20,7 +20,7 @@
     <div class="container">
         <div class="book-cover">
             <div class= "cover">
-                <img src="{{ asset('images/book/portada.png') }}" alt="Niños en columna">
+                <img src="{{ asset('images/book/portada.png') }}" alt="Portada">
             </div>
             
             <div class="available-btn">
@@ -43,7 +43,7 @@
 
             <div class="autors">
                 @foreach ($book->authors as $author)
-                     <a href="{{route('autor', [$author->id])}}">{{$author->nombre}},</a>
+                    <a href="{{route('autor', [$author->id])}}">{{$author->nombre}}</a>
                 @endforeach
             </div>
 

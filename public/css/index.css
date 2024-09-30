@@ -86,7 +86,41 @@ body {
     line-height: 1.25;
 }
 
+.books {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-bottom: 10%;
+}
 
+.books h2 {
+    margin-bottom: 2%;
+    font-size: 3rem;
+}
+
+.books-slider {
+    display: flex;
+    flex-direction: row;
+    width: 95vw;
+}
+
+.books-slider a {
+    margin: 10px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.books-slider a:hover {
+    text-decoration: underline;
+}
+
+.cover img {
+    width: 80px;
+    height: auto;
+}
 
 
 /*Laptop*/
@@ -176,7 +210,7 @@ body {
 
 /*Tablet*/
 /*Vertical*/
-@media (min-width: 481px) and (max-width: 899px) and (orientation: portrait) {
+@media (min-width: 481px) and (max-width: 1240px) and (orientation: portrait) {
     .container {
         width: 100%;
         height: auto;
@@ -259,6 +293,32 @@ body {
         line-height: 1.25;
         text-align: center;
     }
+
+    .books {
+        margin-bottom: 5%;
+    }
+
+    .books h2 {
+        font-size: 3.5rem;
+        margin-bottom: 3%;
+    }
+
+    .books-slider {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .books-slider a {
+        margin: 10px;
+        font-size: 1.5rem;
+        max-width: 80%;
+    }
+
+    .cover img {
+        max-width: 60%;
+    }
+
 
 }
 
@@ -427,13 +487,37 @@ body {
         text-align: center;
     }
 
+    .books {
+        margin-bottom: 5%;
+    }
+
+    .books h2 {
+        font-size: 2rem;
+        margin-bottom: 1%;
+    }
+
+    .books-slider {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .books-slider a {
+        margin: 5px;
+        max-width: 60%;
+    }
+
+    .cover img {
+        max-width: 60%;
+    }
+
 }
 
 /*Horizontal*/
 @media (max-height: 480px) and (orientation: landscape) {
     .container {
         display: grid;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: 45% 55%;
         align-items: center;
     }
 
@@ -459,7 +543,7 @@ body {
     }
     
     .tittle h1{
-        font-size: 3.5rem;
+        font-size: 3.3rem;
         margin-bottom: 7%;
         line-height: 1.1;
     }
@@ -489,7 +573,7 @@ body {
 
     .container-bottom {
         display: grid;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 55% 45%;
         align-items: center;
         padding-right: 5%;
     }
@@ -509,4 +593,26 @@ body {
         text-align: center;
     }
 
+    .books {
+        margin-bottom: 3%;
+    }
+
+    .books h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1%;
+    }
+
+    .books-slider {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .books-slider a {
+        margin: 5px;
+        font-size: 1rem;
+    }
+
+    .cover img {
+        width: 50px;
+    }
 }

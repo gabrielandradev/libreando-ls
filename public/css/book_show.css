@@ -113,6 +113,10 @@ body {
     text-decoration: underline;
 }
 
+.autors a:not(:last-child)::after {
+    content: ',';
+}
+
 .description {
     margin-top: 4.5%;
 }

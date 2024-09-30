@@ -42,16 +42,13 @@
 
     <div class="books">
         <h2>Todos los libros</h2>
-        @foreach ($books as $book)
-            <ul>
-                <li>
-                    <a href="{{route('libro', [$book->id])}}">{{$book->titulo}}</a>
-                </li>
-            </ul>
-        @endforeach
+        <div class="books-slider">
+            @foreach ($books as $book)
 
-        @foreach ($books as $book)
-             <a href="{{route('libro', [$book->id])}}">{{$book->titulo}}, </a>
-        @endforeach
+                <a href="{{route('libro', [$book->id])}}"><img src="{{ asset('images/book/portada.png') }}" alt="Portada" class="cover">  {{$book->titulo}}</a>
+             
+            @endforeach
+        </div>
     </div>
+ </div>
 </x-guest-layout>
