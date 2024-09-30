@@ -43,6 +43,11 @@ Route::middleware('auth')->group(function () {
         '/perfil/wishlist/{book}',
         [WishlistController::class, 'store']
     )->name('wishlist.agregar');
+
+    Route::post(
+        '/perfil/wishlist/{book}/eliminar',
+        [WishlistController::class, 'destroy']
+    )->name('wishlist.eliminar');
 });
 
 require __DIR__ . '/auth.php';
