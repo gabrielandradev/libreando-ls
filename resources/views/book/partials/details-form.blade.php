@@ -124,7 +124,7 @@
             <select name="disponibilidad" id="disponibilidad" required>
             <option value="">Selecciona una opción</option>
             @foreach ($bookAvailabilityStatuses as $statusRecord)
-                <option value="{{$statusRecord->estado}}" @selected(($book->id_disponibilidad ?? -1) == $statusRecord->id)>
+                <option value="{{$statusRecord->id}}" @selected(($book->id_disponibilidad ?? -1) == $statusRecord->id)>
                     {{ucfirst($statusRecord->estado)}}
                 </option>
             @endforeach
