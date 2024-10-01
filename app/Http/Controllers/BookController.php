@@ -32,6 +32,21 @@ class BookController extends Controller
 
     public function store(BookUpdateRequest $request): RedirectResponse
     {
+        $request->validate([
+            'ubicacion_fisica' => ['required', 'string'],
+            'titulo' => ['required'],
+            'isbn' => ['required', 'unique:Libro'],
+            'editorial' => ['required'],
+            'año_edicion' => ['date_format:Y'],
+            'num_edicion' => ['string'],
+            'lugar_edicion' => ['string'],
+            'desc_primario' => ['required', 'string'],
+            'idioma' => ['string'],
+            'notas' => ['string'],
+            'num_paginas' => ['numeric'],
+            'id_disponibilidad' => ['numeric']
+        ]);
+
         $book = Book::create([
             'ubicacion_fisica' => $request->ubicacion_fisica,
             'titulo' => $request->titulo,
@@ -45,8 +60,8 @@ class BookController extends Controller
             'notas' => $request->notas,
             'num_paginas' => $request->num_paginas,
             'id_disponibilidad' => $request->disponibilidad,
-            'fecha_creacion' => date('Y-m-d H:i:s'),
-            'fecha_edicion' => date('Y-m-d H:i:s')
+            'fecha_creacion' => date('Y-m-d'),
+            'fecha_edicion' => date('Y-m-d')
         ]);
 
         foreach ($request->autores as $autor) {
@@ -59,13 +74,13 @@ class BookController extends Controller
         }
 
         foreach ($request->desc_secundario as $desc_secundario) {
-            $created_desc = SecondaryDesc::create([
+            $created_desc = SecondaryDesc::firstOrCreate([
                 'descriptor' => $desc_secundario
             ]);
 
             BookSecondaryDesc::create([
                 'id_libro' => $book->id,
-                'id_descriptor_secundario' => $created_desc->id
+                'id_descriptor_sec' => $created_desc->id
             ]);
         }
 

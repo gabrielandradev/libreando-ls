@@ -15,4 +15,8 @@ class SecondaryDesc extends Model
     protected $fillable = [
         'descriptor'
     ];
+
+    protected $hidden = [
+        'id'
+    ];
 }
