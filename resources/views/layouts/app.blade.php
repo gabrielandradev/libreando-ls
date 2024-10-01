@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/reset.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin-bar.css')}}">
 
     @stack('styles')
 </head>
