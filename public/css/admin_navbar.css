@@ -1,0 +1,137 @@
+body {
+    font-family: "DM Sans", sans-serif;
+}
+/*versioon limpia*/
+
+.admin-navbar {
+    display: flex;
+    justify-content: center;
+    height: 80px;
+}
+
+.admin-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 11px 30px 0;    
+}
+
+.admin-dropdown-title {
+    background-color: #b9c9ea;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    width: 220px;
+    padding: 10px 0;
+    border-radius: 30px;
+    color: #181143;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.admin-dropdown-title svg {
+    width: 30px;
+    height: 30px;
+    fill: #181143;
+}
+
+.admin-dropdown-title .up-icon {
+    visibility: hidden;
+}
+
+.admin-dropdown-title:hover {
+    background-color: #99b1e5;
+}
+
+.admin-dropdown-title:hover .up-icon {
+    visibility: visible;
+}
+
+.admin-dropdown-title:hover .down-icon {
+    visibility: hidden;
+}
+
+.admin-navbar>ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.admin-navbar>ul>li>a {
+    position: relative;
+}
+
+.admin-dropdown {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    visibility: hidden;
+    background-color: #efebeb; 
+    width: 230px;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.admin-dropdown a {
+    width: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #181143;
+    font-size: 1.2rem;
+    font-weight: 450;
+    line-height: 1.2;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.admin-dropdown svg {
+    width: 30px;
+    height: 30px;
+    fill:#181143;
+}
+
+.drop-book:hover svg{
+    fill: red;
+}
+
+.admin-dropdown li {
+    position: relative;
+}
+
+.admin-dropdown li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 10%; 
+    right: 10%;
+    bottom: 0; 
+    height: 1px;
+    background-color: #181143;
+    transform: translateY(50%);
+}
+
+.admin-dropdown a:hover {
+    background-color: #bdbdbd;
+}
+
+.admin-navbar>ul>li a:hover + .admin-dropdown {
+    visibility: visible;
+}
+
+.admin-dropdown:hover {
+    visibility: visible;
+}
+
+.admin-navbar > ul > li:hover .up-icon {
+    visibility: visible;
+}
+
+.admin-navbar > ul > li:hover .down-icon {
+    visibility: hidden;
+}
