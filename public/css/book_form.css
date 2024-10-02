@@ -37,8 +37,8 @@ body {
 .field {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
-    width: 80%;
+    align-items: center;
+    width: 90%;
     padding: 0 5%;
     margin-bottom: 2%;
 }
@@ -54,7 +54,7 @@ body {
 .author-field-group {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
+    align-items: center;
     width: 100%;
     margin-bottom: 3%;
 }
@@ -70,13 +70,14 @@ body {
 .desc-field-group {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
+    align-items: center;
     width: 100%;
     margin-bottom: 3%;
 }
 
 .container label {
     font-size: 1.35rem;
+    text-align: left;
 }
 
 .container input {
@@ -91,7 +92,7 @@ body {
 .field-group {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
+    align-items: center;
     width: 100%;
     margin-bottom: 2%;
     position: relative;
@@ -110,7 +111,7 @@ body {
     height: 35px;
     position: absolute;
     top: 50%;
-    right: 2%;
+    right: 16.5%;
     transform: translateY(-5%);
     cursor: pointer;
 }
@@ -125,9 +126,8 @@ body {
 }
 
 .field textarea {
-    max-width: 100%;
-    min-width: 100%;
-    width: 100%;
+    max-width: 70%;
+    min-width: 70%;
     border: 3.5px solid #000;
     border-radius: 7px;
     font-size: 1.35rem;
@@ -254,7 +254,7 @@ body {
         width: 45px;
         height: 45px;
         top: 75%;
-        right: 7.5%;
+        right: 15%;
         transform: translateY(-60%);
     }
 
