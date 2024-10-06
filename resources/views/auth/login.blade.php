@@ -7,6 +7,9 @@
     @endpush
 
     <div class="container">
+        <a class="logo" href="{{route('dashboard')}}">
+            <img src="{{asset('images/logo/logo-libreando.png')}}" alt="Logo">
+        </a>
         <section class="side">
             <div class= "childrens">
                 <img src="{{ asset('images/login/niños_pila.png') }}" alt="Niños en columna">
