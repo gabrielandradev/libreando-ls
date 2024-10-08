@@ -51,7 +51,7 @@ section {
 }
 
 .loginbox {
-    max-width: 650px;
+    width: 500px;
     padding: 24px;
     display: flex;
     flex-direction:  column;
@@ -87,10 +87,35 @@ section {
     border-radius: 7px;
 }
 
+.user-login select{
+    font-size: 1.2rem;
+    padding: 8px 8px;
+    width: 95%;
+    border: 3px solid #000;
+    border-radius: 7px;
+    text-align: center;
+}
+
 .user-login input::placeholder{
     font-size: 1.2rem;
     text-align: center;
 }
+
+/* .user-input-placeholder {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #cbd5e0;
+} */
+
+select:required:invalid {
+    color: #4a5568;
+  }
+  option[value=""][disabled] {
+    display: none;
+  }
+  option {
+    color: black;
+  }
 
 .remember {
     display: flex;

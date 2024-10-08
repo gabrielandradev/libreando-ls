@@ -17,7 +17,7 @@ class TeacherController extends Controller
 {
     public function create(): View
     {
-        return view("auth.teacher.create");
+        return view("auth.sign-up.teacher.create");
     }
 
     public function store(Request $request): RedirectResponse

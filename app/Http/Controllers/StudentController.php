@@ -19,7 +19,7 @@ class StudentController extends Controller
 {
     public function create(): View
     {
-        return view("auth.student.create");
+        return view("auth.sign-up.student.create");
     }
 
     public function store(Request $request): RedirectResponse
