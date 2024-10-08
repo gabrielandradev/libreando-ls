@@ -1,0 +1,142 @@
+.table-container {
+    width: 100%;
+}
+
+.table-container h1 {
+    color: #181143;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.table {
+    width: 100%;
+    color: #181143;
+    font-size: 1rem;
+    border-collapse: collapse;
+}
+
+.table tr {
+    margin: 0;
+    padding: 0;
+}
+
+.table tr th {
+    margin: 0;
+    padding: 0;
+}
+
+.table tr td {
+    color: #181143;
+    font-size: 1rem;
+    padding: 5px;
+    border-top: 1px solid #bdbdbd;
+    text-align: center;
+}
+
+.table tr td a {
+    text-decoration: none;
+    color: #181143;
+}
+
+.table tr td a:hover {
+    text-decoration: underline;
+}
+
+.table-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-btn button {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    border-radius: 25px;
+    border: none;
+    color: #ffffff;
+    margin: 5px;
+}
+
+.table-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: #ffffff;
+}
+
+.accept-btn {
+    background-color: #5dbb63;
+}
+
+.accept-btn .accept-hover {
+    visibility: hidden;
+}
+
+.accept-btn:hover .accept-hover {
+    transition: 0.8s;
+    visibility: visible;
+}
+
+
+.accept-btn:hover .accept-normal {
+    visibility: hidden;
+}
+
+.reject-btn {
+    background-color: #e70f00;
+}
+
+.reject-btn .reject-hover {
+    visibility: hidden;
+}
+
+.reject-btn:hover .reject-hover {
+    transition: 0.8s;
+    visibility: visible;
+}
+
+
+.reject-btn:hover .reject-normal {
+    visibility: hidden;
+}
+
+.process-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.process-btn button{
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    border-radius: 25px;
+    color: #ffffff;
+    background-color: #181143;
+    border: none;
+    margin: 5px;
+}
+
+.process-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: #ffffff;
+}
+
+.process-btn .process-hover {
+    visibility: hidden;
+}
+
+.process-btn:hover .process-hover {
+    transition: 0.8s;
+    visibility: visible;
+}
+
+
+.process-btn:hover .process-normal {
+    visibility: hidden;
+}

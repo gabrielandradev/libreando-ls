@@ -17,12 +17,25 @@
 }
 
 .loan-item {
-    display: block;
-    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    background-color: #f7f1f1;
     margin: 2vh 4vw;
     padding: 2vh 4vw;
     border-radius: 4rem;
     width: 60vw;
+}
+
+.loan-cover {
+    background-color: aqua;
+    width: 180px;
+    height: auto;
+    margin-right: 25px;
+}
+
+.loan-cover img {
+    width: auto;
+    height: auto;
 }
 
 @media screen and (max-width: 815px){
