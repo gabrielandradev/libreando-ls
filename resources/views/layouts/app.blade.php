@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('fonts/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_navbar.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/loan_view.css') }}">
 
     @stack('styles')
 </head>
