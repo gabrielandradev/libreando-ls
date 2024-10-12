@@ -51,23 +51,31 @@
 .table-btn button {
     width: 150px;
     height: 50px;
+    box-sizing: border-box;
     display: flex;
     justify-content:space-evenly;
     align-items: center;
     border-radius: 25px;
-    border: none;
-    color: #ffffff;
     margin: 5px;
 }
 
 .table-btn svg {
     width: 30px;
     height: 30px;
-    fill: #ffffff;
 }
 
 .accept-btn {
-    background-color: #5dbb63;
+    background-color: #ffffff;
+    border: 3px solid #079C6A;
+    color: #079C6A;
+    fill: #079C6A;
+}
+
+.accept-btn:hover {
+    transition: 0.5s;
+    background-color: #079C6A;
+    color: #ffffff;
+    fill: #ffffff;
 }
 
 .accept-btn .accept-hover {
@@ -75,7 +83,6 @@
 }
 
 .accept-btn:hover .accept-hover {
-    transition: 0.8s;
     visibility: visible;
 }
 
@@ -85,7 +92,16 @@
 }
 
 .reject-btn {
-    background-color: #e70f00;
+    background-color: #ffffff;
+    border: 3px solid #EA3E40;
+    color: #EA3E40;
+    fill: #EA3E40;
+}
+.reject-btn:hover {
+    transition: 0.5s;
+    background-color: #EA3E40;
+    color: #ffffff;
+    fill: #ffffff;
 }
 
 .reject-btn .reject-hover {
@@ -93,7 +109,6 @@
 }
 
 .reject-btn:hover .reject-hover {
-    transition: 0.8s;
     visibility: visible;
 }
 
@@ -111,19 +126,32 @@
 .process-btn button{
     width: 150px;
     height: 50px;
+    box-sizing: border-box;
     display: flex;
     justify-content:space-evenly;
     align-items: center;
     border-radius: 25px;
-    color: #ffffff;
-    background-color: #181143;
-    border: none;
+    color: #181143;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: 3px solid #181143;
     margin: 5px;
+}
+
+.process-btn button:hover {
+    transition: 0.5s;
+    background-color: #37315e;
+    color: #ffffff;
 }
 
 .process-btn svg {
     width: 30px;
     height: 30px;
+    fill: #181143;
+}
+
+.process-btn button:hover svg {
+    transition: 0.5s;
     fill: #ffffff;
 }
 

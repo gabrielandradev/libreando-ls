@@ -87,41 +87,94 @@ body {
 }
 
 .books {
+    margin-bottom: 50px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    margin-bottom: 10%;
+    justify-content: center;
+    position: relative;
 }
 
 .books h2 {
-    margin-bottom: 2%;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.books svg {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    fill: #e0e0e0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.books svg:hover {
+    transition: 0.8s;
+    fill: #000000;
+}
+
+.right-btn {
+    right: 5%;
+}
+
+.left-btn {
+    left: 5%;
 }
 
 .books-slider {
+    width: 80%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 5));
+    gap: 10px;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.books-slider :where(.book-container, .book-img) {
     display: flex;
-    flex-direction: row;
-    width: 95vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.books-slider a {
-    margin: 10px;
-    text-align: center;
-    color: black;
-    text-decoration: none;
+.books-slider.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.books-slider.dragging .book-container {
+    cursor: grab;
+    user-select: none;
+}
+
+.book-container {
+    scroll-snap-align: start;
+    height: 300px;
+    width: 200px;
+    list-style-type: none;
+}
+
+.book-container a {
     font-size: 1.2rem;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
 }
 
-.books-slider a:hover {
+.book-container a:hover {
     text-decoration: underline;
 }
 
-.cover img {
-    width: 80px;
-    height: auto;
+.book-img {
+    height: 250px;
+    width: auto;
 }
-
 
 /*Laptop*/
 @media (min-width: 900px) and (max-width: 1280px) and (orientation: landscape) {

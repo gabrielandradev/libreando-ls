@@ -42,13 +42,17 @@
 
     <div class="books">
         <h2>Todos los libros</h2>
-        <div class="books-slider">
+        <svg class="left-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+        <ul class="books-slider">
             @foreach ($books as $book)
-
-                <a href="{{route('libro', [$book->id])}}"><img src="{{ asset('images/book/portada.png') }}" alt="Portada" class="cover">  {{$book->titulo}}</a>
-             
+                <li class="book-container">
+                    <a href="{{route('libro', [$book->id])}}" draggable="false"><img src="{{ asset('images/book/portada.png') }}" alt="Portada" class="book-img" draggable="false">{{$book->titulo}}</a>
+                </li>
             @endforeach
-        </div>
+        </ul>
+        <svg class="right-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
     </div>
  </div>
+
+<script src="{{ asset('js\index.js') }}"></script>
 </x-guest-layout>
