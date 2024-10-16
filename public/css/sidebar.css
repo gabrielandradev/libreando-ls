@@ -40,10 +40,12 @@
     font-size: 1.2rem;
     gap: 10px;
     cursor: pointer;
+    user-select: none;
 }
 
 .sidebar-btn:hover {
     background-color: #261e57;
+    transition: 0.5s;
 }
 
 .sidebar ul {
@@ -62,6 +64,7 @@
     font-size: 1.2rem;
     padding-left: 20%;
     text-decoration: none;
+    user-select: none;
 }
 
 .sidebar a:hover {
@@ -120,4 +123,11 @@
 .sidebar-btn.active .sidebar-icon-down {
     transition: 0.5s;
     visibility: visible;
+}
+
+.sidebar-separator {
+    height: 1.5px;
+    background-color: #ffffff;
+    margin: 0 10%;
+    width: 80%;
 }
