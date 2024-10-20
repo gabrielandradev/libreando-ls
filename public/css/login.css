@@ -202,6 +202,9 @@ select:required:invalid {
 
 /*Laptop*/
 @media (min-width: 900px) and (max-width: 1280px) and (orientation: landscape) {
+    .login-btn button {
+        margin: 30px auto;
+    }
 }
 
 
@@ -305,6 +308,7 @@ select:required:invalid {
 
     .remember {
         font-size: 1rem;
+        margin-left: 7.5%;
     }
     
     .login-btn button{
