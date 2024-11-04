@@ -5,21 +5,23 @@
     <div class="table-container">
         <h1>Solicitudes de préstamo pendientes</h1>
         <table class="table">
-            <tr>
-                <th>Solicitud de préstamo</th>
-                <th>Articulo a prestar</th>
-                <th>Prestatario</th>
-                <th>Fecha de solicitud</th>
-                <th>Aceptar préstamo</th>
-            </tr>
-
-            @foreach ($loans as $loan)
+            <thead>
                 <tr>
-                    <td>#{{$loan->id}}</td>
-                    <td><a href="{{route('libro', $loan->book->id)}}">{{$loan->book->titulo}}</td>
-                    <td>{{$loan->borrower->email}}</td>
-                    <td>{{$loan->fecha_solicitud}}</td>
-                    <td class="process-btn">
+                    <th>Solicitud de préstamo</th>
+                    <th>Articulo a prestar</th>
+                    <th>Prestatario</th>
+                    <th>Fecha de solicitud</th>
+                    <th>Aceptar préstamo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($loans as $loan)
+                <tr>
+                    <td data-label="N° préstamo">#{{$loan->id}}</td>
+                    <td data-label="Articulo a prestar"><a href="{{route('libro', $loan->book->id)}}">{{$loan->book->titulo}}</td>
+                    <td data-label="Prestatario">{{$loan->borrower->email}}</td>
+                    <td data-label="Fecha de solicitud">{{$loan->fecha_solicitud}}</td>
+                    <td data-label="Aceptar préstamo" class="process-btn">
                         <form action="{{route('prestamo.procesar', $loan->id)}}" method="get">
                             @csrf
                             <button>
@@ -30,6 +32,8 @@
                     </td>
                 </tr>
             @endforeach
+            </tbody>
+            
         </table>  
     </div>
 
